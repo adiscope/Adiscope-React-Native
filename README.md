@@ -32,7 +32,7 @@
 #### [Adiscope Error Information](./docs/error_info.md)
 #### etc
 - [Sample App 폴더 이동](./example)
-- [Releases](./releases)
+- [Releases](../../releases)
 <br/>
 
 
@@ -145,6 +145,22 @@ pod install --repo-update
 <string>{applovin_app_id 기입 필요}</string>
 ```
 - AppLovinSdkKey의 Key 설정
+<br/>
+
+#### C. AppDelegate 추가
+##### 가. Max 사용 시 추가
+###### a. Object-C
+```object-c
+@property (nonatomic, strong) UIWindow *window;
+```
+- iOS 폴더 내 AppDelegate.h 파일의 AppDelegate interface 내에 추가
+<br/>
+
+###### b. Swift
+```swift
+var window: UIWindow?
+```
+- iOS 폴더 내 AppDelegate.swift 파일의 AppDelegate class 내에 추가
 <br/><br/><br/><br/>
 
 ## Adiscope Overview
@@ -597,5 +613,5 @@ if (isOff) {
 <br/><br/>
 
 ## Releases
-> - [Releases](./releases)
+> - [Releases](../../releases)
 <br/><br/>
