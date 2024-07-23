@@ -22,17 +22,17 @@ Pod::Spec.new do |s|
 
   s.dependency "React-Core"
 
-  s.dependency "Adiscope", "3.7.0"
-  s.dependency 'AdiscopeMediaAdManager', '3.6.0'
-  s.dependency 'AdiscopeMediaAdMob', '3.7.0'
-  s.dependency 'AdiscopeMediaAppLovin', '3.6.1'
-  s.dependency 'AdiscopeMediaChartBoost', '3.6.0'
-  s.dependency 'AdiscopeMediaFAN', '3.6.0'
-  s.dependency 'AdiscopeMediaMax', '3.6.1'
-  s.dependency 'AdiscopeMediaMobVista', '3.6.0'
-  s.dependency 'AdiscopeMediaPangle', '3.6.0'
-  s.dependency 'AdiscopeMediaUnityAds', '3.6.0'
-  s.dependency 'AdiscopeMediaVungle', '3.6.0'
+  s.dependency "Adiscope", "3.8.0"
+  s.dependency 'AdiscopeMediaAdManager', '3.8.0'
+  s.dependency 'AdiscopeMediaAdMob', '3.8.0'
+  s.dependency 'AdiscopeMediaAppLovin', '3.8.0'
+  s.dependency 'AdiscopeMediaChartBoost', '3.8.0'
+  s.dependency 'AdiscopeMediaFAN', '3.8.0'
+  s.dependency 'AdiscopeMediaMax', '3.8.0'
+  s.dependency 'AdiscopeMediaMobVista', '3.8.0'
+  s.dependency 'AdiscopeMediaPangle', '3.8.0'
+  s.dependency 'AdiscopeMediaUnityAds', '3.8.0'
+  s.dependency 'AdiscopeMediaVungle', '3.8.0'
 
   # Don't install the dependencies when we run `pod install` in the old architecture.
   if ENV['RCT_NEW_ARCH_ENABLED'] == '1' then

@@ -1,9 +1,9 @@
 # Adiscope React Native
-[![GitHub package.json version](https://img.shields.io/badge/ReactNative-3.7.0-blue)](https://github.com/adiscope/Adiscope-React-Native/releases)
-[![GitHub package.json version](https://img.shields.io/badge/Android-3.7.0-blue)](https://github.com/adiscope/Adiscope-Android-Sample)
-[![GitHub package.json version](https://img.shields.io/badge/iOS-3.7.0-blue)](https://github.com/adiscope/Adiscope-iOS-Sample)
-[![GitHub package.json version](https://img.shields.io/badge/Unity-3.7.0-blue)](https://github.com/adiscope/Adiscope-Unity-UPM)
-[![GitHub package.json version](https://img.shields.io/badge/Flutter-3.7.0-blue)](https://pub.dev/packages/adiscope_flutter_plugin)
+[![GitHub package.json version](https://img.shields.io/badge/ReactNative-3.8.0-blue)](https://github.com/adiscope/Adiscope-React-Native/releases)
+[![GitHub package.json version](https://img.shields.io/badge/Android-3.8.0-blue)](https://github.com/adiscope/Adiscope-Android-Sample)
+[![GitHub package.json version](https://img.shields.io/badge/iOS-3.8.0-blue)](https://github.com/adiscope/Adiscope-iOS-Sample)
+[![GitHub package.json version](https://img.shields.io/badge/Unity-3.8.0-blue)](https://github.com/adiscope/Adiscope-Unity-UPM)
+[![GitHub package.json version](https://img.shields.io/badge/Flutter-3.8.0-blue)](https://pub.dev/packages/adiscope_flutter_plugin)
 
 - Android Target API Level : 31+
 - Android Minimum API Level : 15
@@ -114,7 +114,7 @@ pod install --repo-update
 - ex : Some ad content may require access to the user tracking.
 <br/>
 
-##### 다. SKAdNetwork 추가 ([Download](https://github.com/adiscope/Adiscope-iOS-Sample/releases/download/3.4.0/AdiscopeSkAdNetworks.plist))
+##### 다. SKAdNetwork 추가 ([Download](https://github.com/adiscope/Adiscope-iOS-Sample/releases/download/3.8.0/AdiscopeSkAdNetworks.plist))
 ```xml
 <dict>
     <key>SKAdNetworkItems</key>
@@ -126,7 +126,7 @@ pod install --repo-update
     </array>
 </dict>
 ```
-- SKAdNetwork Download File 내용 추가 ([Download](https://github.com/adiscope/Adiscope-iOS-Sample/releases/download/3.4.0/AdiscopeSkAdNetworks.plist))
+- SKAdNetwork Download File 내용 추가 ([Download](https://github.com/adiscope/Adiscope-iOS-Sample/releases/download/3.8.0/AdiscopeSkAdNetworks.plist))
 <br/>
 
 ##### 라. Admob 사용 시 추가
@@ -268,7 +268,8 @@ useEffect(() => {
 }, [failedToShowOfferwall4Adiscope]);
 ```
 - [Initialize](#2-initialize)를 실행 해야 Callbacks 호출
-- Show 성공 시 `openedOfferwall4Adiscope`, `closedOfferwall4Adiscope` callback이 순차적으로 호출    
+- Show 성공 시 `openedOfferwall4Adiscope`, `closedOfferwall4Adiscope` callback이 순차적으로 호출
+- `failedToShowOfferwall4Adiscope`시 [AdiscopeError 참고](./docs/error_info.md)    
 <br/><br/><br/>
 
 ### 5. RewardedVideo
@@ -297,6 +298,7 @@ await loadRewardedVideo4Adiscope(unitId);
   - 광고가 Show되는 동안 다음 광고를 load를 할 수도 있지만 이는 사용하는 mediation ad network company의 종류에 따라 달라질 수 있으므로 항상 보장되는 동작은 아님
 - Show의 callback 인 `closedRewardedVideo4Adiscope`에서 다시 Load를 하는 것을 권장 
   - Abusing 방지를 위해 Rewarded Video Ad를 연속으로 보여주는 것을 제한하여 한번 광고를 보고 나면 일정 시간이 지난 후에 다시 Show를 할 수 있도로록 Admin page에서 서비스 설정 가능
+- (**Optional**) Load의 시간이 필요해 ProgressBar 노출 추천
 <br/>
 
 #### C. IsLoaded
@@ -384,6 +386,7 @@ useEffect(() => {
 - [Initialize](#2-initialize)를 실행 해야 Callbacks 호출
 - `Load` 성공 시 `loadedRewardedVideo4Adiscope`, 실패 시 `failedToLoadRewardedVideo4Adiscope`가 호출
 - `Show` 성공 시 `openedRewardedVideo4Adiscope`, `closedRewardedVideo4Adiscope`가 순차적으로 호출되고, 실패시 `failedToShowRewardedVideo4Adiscope`가 호출    
+- `failedToLoadRewardedVideo4Adiscope`, `failedToShowRewardedVideo4Adiscope`시 [AdiscopeError 참고](./docs/error_info.md)    
 <br/><br/><br/>
 
 ### 6. Interstitial
@@ -407,6 +410,7 @@ await loadInterstitial4Adiscope(unitId);
 - Load를 한 후 Show를 하고, 광고를 Show한 후에는 다시 Load를 하여 다음 번 Show를 준비
 - 광고가 Show되는 동안 다음 광고를 load를 할 수도 있지만 이는 사용하는 mediation ad network company의 종류에 따라 달라질 수 있으므로 항상 보장되는 동작은 아님
 - Load 동작 수행 중에 Load를 여러 번 호출할 수 없음
+- (**Optional**) Load의 시간이 필요해 ProgressBar 노출 추천
 <br/>
 
 #### C. IsLoaded
@@ -476,6 +480,7 @@ useEffect(() => {
 - [Initialize](#2-initialize)를 실행 해야 Callbacks 호출
 - `Load` 성공 시 `loadedInterstitial4Adiscope`, 실패 시 `failedToLoadInterstitial4Adiscope`가 호출
 - `Show` 성공 시 `openedInterstitial4Adiscope`, `closedInterstitial4Adiscope`가 순차적으로 호출되고, 실패 시 `failedToShowInterstitial4Adiscope`가 호출    
+- `failedToLoadInterstitial4Adiscope`, `failedToShowInterstitial4Adiscope`시 [AdiscopeError 참고](./docs/error_info.md)    
 <br/><br/><br/>
 
 ### 7. RewardedInterstitial
@@ -563,6 +568,7 @@ useEffect(() => {
 - [Initialize](#2-initialize)를 실행 해야 Callbacks 호출
 - Show 성공 후 Skip 시 `skipRewardedInterstitial4Adiscope`가 호출
 - Show 성공 후 영상 시청 시 `openedRewardedInterstitial4Adiscope`, `closedRewardedInterstitial4Adiscope`가 순차적으로 호출되고, 실패 시 `failedToShowRewardedInterstitial4Adiscope`가 호출    
+- `failedToShowRewardedInterstitial4Adiscope`시 [AdiscopeError 참고](./docs/error_info.md)    
 <br/><br/><br/>
 
 ### 8. Etc
