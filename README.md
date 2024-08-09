@@ -1,10 +1,11 @@
 # Adiscope React Native
-[![GitHub package.json version](https://img.shields.io/badge/ReactNative-3.8.0-blue)](https://github.com/adiscope/Adiscope-React-Native/releases)
-[![GitHub package.json version](https://img.shields.io/badge/Android-3.8.0-blue)](https://github.com/adiscope/Adiscope-Android-Sample)
-[![GitHub package.json version](https://img.shields.io/badge/iOS-3.8.0-blue)](https://github.com/adiscope/Adiscope-iOS-Sample)
-[![GitHub package.json version](https://img.shields.io/badge/Unity-3.8.0-blue)](https://github.com/adiscope/Adiscope-Unity-UPM)
-[![GitHub package.json version](https://img.shields.io/badge/Flutter-3.8.0-blue)](https://pub.dev/packages/adiscope_flutter_plugin)
+[![GitHub package.json version](https://img.shields.io/badge/ReactNative-3.8.1-blue)](https://github.com/adiscope/Adiscope-React-Native/releases)
+[![GitHub package.json version](https://img.shields.io/badge/Android-3.8.1-blue)](https://github.com/adiscope/Adiscope-Android-Sample)
+[![GitHub package.json version](https://img.shields.io/badge/iOS-3.8.1-blue)](https://github.com/adiscope/Adiscope-iOS-Sample)
+[![GitHub package.json version](https://img.shields.io/badge/Unity-3.8.1-blue)](https://github.com/adiscope/Adiscope-Unity-UPM)
+[![GitHub package.json version](https://img.shields.io/badge/Flutter-3.8.1-blue)](https://pub.dev/packages/adiscope_flutter_plugin)
 
+- **${\color{red}Expo 지원 불가}$**
 - Android Target API Level : 31+
 - Android Minimum API Level : 15
   - Admob, Pangle 사용 시 : 16
@@ -28,6 +29,7 @@
 - [RewardedInterstitial](#7-rewardedinterstitial)
 - [Etc](#8-etc)
 #### [웹사이트 필수 등록](#웹사이트-필수-등록-android-전용)
+#### [Adiscope Server 연동하기](./docs/reward_callback_info.md)
 #### [Privacy Manifest 정책 적용](#privacy-manifest-정책-적용-ios-전용)
 #### [Adiscope Error Information](./docs/error_info.md)
 #### etc
@@ -603,6 +605,10 @@ if (isOff) {
 ## 웹사이트 필수 등록 (Android 전용)
 - 관리자에게 전달받은 `app-ads.txt`를 웹사이트에 등록
 > - [app-ads.txt 등록 방법 및 정보](./docs/app-ads.txt.md)
+<br/><br/>
+
+## Adiscope Server 연동하기
+> - [연동하기](./docs/reward_callback_info.md)
 <br/><br/>
 
 ## Privacy Manifest 정책 적용 (iOS 전용)
