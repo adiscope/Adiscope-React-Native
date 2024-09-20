@@ -22,15 +22,15 @@ Pod::Spec.new do |s|
 
   s.dependency "React-Core"
 
-  s.dependency "Adiscope", "3.8.2"
+  s.dependency "Adiscope", "3.8.3"
   s.dependency 'AdiscopeMediaAdManager', '3.8.1'
-  s.dependency 'AdiscopeMediaAdMob', '3.8.1'
+  s.dependency 'AdiscopeMediaAdMob', '3.8.3'
   s.dependency 'AdiscopeMediaAppLovin', '3.8.1'
   s.dependency 'AdiscopeMediaChartBoost', '3.8.1'
   s.dependency 'AdiscopeMediaFAN', '3.8.1'
-  s.dependency 'AdiscopeMediaMax', '3.8.2'
+  s.dependency 'AdiscopeMediaMax', '3.8.3'
   s.dependency 'AdiscopeMediaMobVista', '3.8.1'
-  s.dependency 'AdiscopeMediaPangle', '3.8.1'
+  s.dependency 'AdiscopeMediaPangle', '3.8.3'
   s.dependency 'AdiscopeMediaUnityAds', '3.8.1'
   s.dependency 'AdiscopeMediaVungle', '3.8.1'
 
