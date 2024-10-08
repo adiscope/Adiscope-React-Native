@@ -1,6 +1,7 @@
 export declare const initialize4Adiscope: () => Promise<boolean>;
 export declare const isInitialize4Adiscope: () => Promise<boolean>;
 export declare const setUserId4Adiscope: (userId: string) => Promise<boolean>;
+export declare const setRewardedCheckParam4Adiscope: (param: string) => Promise<boolean>;
 export declare const getSDKVersion4Adiscope: () => Promise<boolean>;
 export declare const getNetworksVersions4Adiscope: () => Promise<boolean>;
 export declare const getUnitStatus4Adiscope: (unitId: string) => Promise<boolean>;
@@ -14,6 +15,12 @@ export declare const useOfferwall4Adiscope: (unitId?: string, detailId?: string,
   openedOfferwall4Adiscope: any;
   closedOfferwall4Adiscope: any;
   failedToShowOfferwall4Adiscope: any;
+};
+export declare const useAdEvent4Adiscope: (unitId?: string) => {
+  showAdEvent4Adiscope: (unitId: string) => Promise<boolean>;
+  openedAdEvent4Adiscope: any;
+  closedAdEvent4Adiscope: any;
+  failedToShowAdEvent4Adiscope: any;
 };
 export declare const useRewardedVideo4Adiscope: (unitId?: string) => {
   loadRewardedVideo4Adiscope: (unitId: string) => Promise<boolean>;

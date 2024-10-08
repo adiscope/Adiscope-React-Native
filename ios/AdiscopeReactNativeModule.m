@@ -27,6 +27,12 @@ RCT_EXTERN_METHOD(
 )
 
 RCT_EXTERN_METHOD(
+    setRewardedCheckParam: (NSString *) param
+    resolver: (RCTPromiseResolveBlock *) resolve
+    rejecter:(RCTPromiseRejectBlock *) reject
+)
+
+RCT_EXTERN_METHOD(
     isInitialize: (RCTPromiseResolveBlock *) resolve
     rejecter: (RCTPromiseRejectBlock *) reject
 )
@@ -80,6 +86,12 @@ RCT_EXTERN_METHOD(
 
 RCT_EXTERN_METHOD(
     showOfferwallDetailFromUrl: (NSString *) url
+    resolver: (RCTPromiseResolveBlock *) resolve
+    rejecter:(RCTPromiseRejectBlock *) reject
+)
+
+RCT_EXTERN_METHOD(
+    showAdEvent: (NSString *) unitId
     resolver: (RCTPromiseResolveBlock *) resolve
     rejecter:(RCTPromiseRejectBlock *) reject
 )

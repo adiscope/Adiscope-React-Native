@@ -26,6 +26,8 @@ import com.nps.adiscope.model.UnitStatus;
 import com.nps.adiscope.listener.AdiscopeInitializeListener;
 import com.nps.adiscope.offerwall.OfferwallAd;
 import com.nps.adiscope.offerwall.OfferwallAdListener;
+import com.nps.adiscope.adevent.AdEvent;
+import com.nps.adiscope.adevent.AdEventListener;
 import com.nps.adiscope.reward.RewardItem;
 import com.nps.adiscope.reward.RewardedVideoAd;
 import com.nps.adiscope.reward.RewardedVideoAdListener;
@@ -50,6 +52,7 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
   private static ReactContext mContext;
 
   private static OfferwallAd mOfferwallAd;
+  private static AdEvent mAdEvent;
   private static RewardedVideoAd mRewardedVideoAd;
   private static InterstitialAd mInterstitialAd;
   private static RewardedInterstitialAd mRewardedInterstitialAd;
@@ -92,6 +95,8 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
         if (isSuccess) {
           mOfferwallAd = AdiscopeSdk.getOfferwallAdInstance(getCurrentActivity());
           mOfferwallAd.setOfferwallAdListener(mOfferwallAdListener());
+          mAdEvent = AdiscopeSdk.getAdEventInstance(getCurrentActivity());
+          mAdEvent.setAdEventListener(mAdEventListener());
           mRewardedVideoAd = AdiscopeSdk.getRewardedVideoAdInstance(getCurrentActivity());
           mRewardedVideoAd.setRewardedVideoAdListener(mRewardedVideoAdListener());
           mInterstitialAd = AdiscopeSdk.getInterstitialAdInstance(getCurrentActivity());
@@ -130,6 +135,12 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void setUserId(String userId, Promise promise) {
     AdiscopeSdk.setUserId(userId);
+    promise.resolve(true);
+  }
+
+  @ReactMethod
+  public void setRewardedCheckParam(String param, Promise promise) {
+    AdiscopeSdk.setRewardedCheckParam(param);
     promise.resolve(true);
   }
 
@@ -275,6 +286,43 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
       promise.resolve(true);
     } else {
       promise.reject("exception", "not Acitivy or OfferwallAd");
+    }
+  }
+
+
+  public AdEventListener mAdEventListener() {
+    return new AdEventListener() {
+      @Override
+      public void onAdEventOpened(String unitId) {
+        WritableMap payload = Arguments.createMap();
+        payload.putString("unitId", unitId);
+        sendEvent("onAdEventOpened", payload);
+      }
+      @Override
+      public void onAdEventFailedToShow(String unitId, AdiscopeError adiscopeError) {
+        WritableMap payload = Arguments.createMap();
+        payload.putString("unitId", unitId);
+        payload.putString("errorDescription", adiscopeError.getDescription());
+        sendEvent("onAdEventFailedToShow", payload);
+      }
+      @Override
+      public void onAdEventClosed(String unitId) {
+        WritableMap payload = Arguments.createMap();
+        payload.putString("unitId", unitId);
+        sendEvent("onAdEventClosed", payload);
+      }
+    };
+  }
+
+  @ReactMethod
+  public void showAdEvent(String unitId, Promise promise) {
+    Activity currentActivity = getCurrentActivity();
+    if (currentActivity != null && mAdEvent != null) {
+      mAdEvent.show(currentActivity, unitId);
+      promise.resolve(true);
+    } else {
+      promise.resolve(false);
+      promise.reject("exception", "not Acitivy or AdEvent");
     }
   }
 

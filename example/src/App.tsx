@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, TextInput, Platform, View } from 'react-native';
 // 초기 실행
-import { initialize4Adiscope, isInitialize4Adiscope, setUserId4Adiscope } from '@adiscope.ad/adiscope-react-native';
-// Offerwall, RewardedVideo, Interstitial, RewardedInterstitial
-import { useOfferwall4Adiscope, useRewardedVideo4Adiscope, useInterstitial4Adiscope,
+import { initialize4Adiscope, isInitialize4Adiscope, setUserId4Adiscope, setRewardedCheckParam4Adiscope } from '@adiscope.ad/adiscope-react-native';
+// Offerwall, AdEvent, RewardedVideo, Interstitial, RewardedInterstitial
+import { useOfferwall4Adiscope, useAdEvent4Adiscope, useRewardedVideo4Adiscope, useInterstitial4Adiscope,
   useRewardedInterstitial4Adiscope } from '@adiscope.ad/adiscope-react-native';
 // Other
 import { getSDKVersion4Adiscope, getNetworksVersions4Adiscope, getUnitStatus4Adiscope, setVolumeOff4Adiscope, 
@@ -23,10 +23,12 @@ export default function App() {
 
   const mediaId: string = Platform.OS === 'android' ? '' : '';
   const mediaSecret: string = Platform.OS === 'android' ? '' : '';
+  const customData: string = '';
   const userId: string = 'React_Native_Tester_User';
   const subDomain: string = '';
   const offerwallId: string = Platform.OS === 'android' ? '' : '';
   const offerwallDetailId: string = Platform.OS === 'android' ? '' : '';
+  const adEventUnitId: string = Platform.OS === 'android' ? '' : '';
   const rvUnitId: string = Platform.OS === 'android' ? '' : '';
   const itUnitId: string = Platform.OS === 'android' ? '' : '';
   const riUnitId: string = Platform.OS === 'android' ? '' : '';
@@ -56,6 +58,17 @@ export default function App() {
     setStrChildYN(newText);
   };
 
+  // Start Set CustomData
+  const [strCustomData, setStrCustomData] = useState(customData);
+  const customDataTextChange = (newText: string) => {
+    setStrCustomData(newText);
+  };
+  const btnSetCustomData = async () => {
+    const result = await setRewardedCheckParam4Adiscope(strCustomData);
+    setLogText('Set CustomData =>' + strCustomData + ' / ' + result);
+  };
+  // End Set CustomData
+  
   // Start Initialize
   const [statusInitialize, setStatusInitialize] = useState({
     isSuccess: false,
@@ -174,6 +187,19 @@ export default function App() {
     setLogText('Show Offerwall Detail From Url => ' + result);
   }
   // End Offerwall
+
+  // Start AdEvent
+  const { showAdEvent4Adiscope, openedAdEvent4Adiscope, closedAdEvent4Adiscope, failedToShowAdEvent4Adiscope } = useAdEvent4Adiscope();
+    
+  const [strAdEventUnitId, setStrAdEventUnitId] = useState(adEventUnitId);
+  const adEventUnitIdTextChange = (newText: string) => {
+    setStrAdEventUnitId(newText);
+  };
+  const btnShowAdEvent = async () => {
+    const result = await showAdEvent4Adiscope(strAdEventUnitId);
+    setLogText('Show AdEvent => ' + result);
+  }
+  // End AdEvent
 
   // Start RewardedVideo
   const { loadRewardedVideo4Adiscope, isLoadedRewardedVideo4Adiscope, showRewardedVideo4Adiscope,
@@ -302,6 +328,24 @@ export default function App() {
     }
   }, [failedToShowOfferwall4Adiscope]);
   // End Offerwall CallBack
+
+  // Start AdEvent CallBack
+  useEffect(() => {
+    if (openedAdEvent4Adiscope) {
+      setLogText('onAdEventOpened => ' + openedAdEvent4Adiscope['unitId']);
+    }
+  }, [openedAdEvent4Adiscope]);
+  useEffect(() => {
+    if (closedAdEvent4Adiscope) {
+      setLogText('onAdEventClosed => ' + closedAdEvent4Adiscope['unitId']);
+    }
+  }, [closedAdEvent4Adiscope]);
+  useEffect(() => {
+    if (failedToShowAdEvent4Adiscope) {
+      setLogText('onAdEventFailedToShow => ' + failedToShowAdEvent4Adiscope['unitId'] + ", " + failedToShowAdEvent4Adiscope['errorDescription']);
+    }
+  }, [failedToShowAdEvent4Adiscope]);
+  // End AdEvent CallBack
 
   // Start RewardedVideo CallBack
   useEffect(() => {
@@ -456,6 +500,13 @@ export default function App() {
         </TouchableOpacity>
 
         <Text style={styles.subTitle}>Other</Text>
+        <View style={styles.textInputContainer}>
+          <Text style={styles.textInputTitle}>CustomData</Text>
+          <TextInput style={styles.textInput} value={strCustomData} onChangeText={customDataTextChange} />
+        </View>
+        <TouchableOpacity style={styles.button} onPress={btnSetCustomData}>
+          <Text style={styles.button_name}>Set CustomData</Text>
+        </TouchableOpacity>
         <View style={styles.buttonContainer}>
           <TouchableOpacity style={styles.buttonM} onPress={btnGetSDKVersion}>
             <Text style={styles.button_name}>Print SDK Version</Text>
@@ -506,6 +557,15 @@ export default function App() {
             <Text style={styles.button_name}>Show Offerwall Detail From URL</Text>
           </TouchableOpacity>
         </View>
+
+        <Text style={styles.subTitle}>AdEvent</Text>
+        <View style={styles.textInputContainer}>
+          <Text style={styles.textInputTitle}>Unit ID</Text>
+          <TextInput style={styles.textInput} value={strAdEventUnitId} onChangeText={adEventUnitIdTextChange} />
+        </View>
+        <TouchableOpacity style={styles.button} onPress={btnShowAdEvent}>
+          <Text style={styles.button_name}>Show AdEvent</Text>
+        </TouchableOpacity>
 
         <Text style={styles.subTitle}>RewardedVideo</Text>
         <View style={styles.textInputContainer}>

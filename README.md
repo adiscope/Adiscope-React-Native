@@ -1,15 +1,13 @@
 # Adiscope React Native
-[![GitHub package.json version](https://img.shields.io/badge/ReactNative-3.8.3-blue)](https://github.com/adiscope/Adiscope-React-Native/releases)
-[![GitHub package.json version](https://img.shields.io/badge/Android-3.8.1-blue)](https://github.com/adiscope/Adiscope-Android-Sample)
-[![GitHub package.json version](https://img.shields.io/badge/iOS-3.8.3-blue)](https://github.com/adiscope/Adiscope-iOS-Sample)
-[![GitHub package.json version](https://img.shields.io/badge/Unity-3.8.3-blue)](https://github.com/adiscope/Adiscope-Unity-UPM)
-[![GitHub package.json version](https://img.shields.io/badge/Flutter-3.8.3-blue)](https://pub.dev/packages/adiscope_flutter_plugin)
+[![GitHub package.json version](https://img.shields.io/badge/ReactNative-3.9.0-blue)](https://github.com/adiscope/Adiscope-React-Native/releases)
+[![GitHub package.json version](https://img.shields.io/badge/Android-3.9.0-blue)](https://github.com/adiscope/Adiscope-Android-Sample)
+[![GitHub package.json version](https://img.shields.io/badge/iOS-3.9.0-blue)](https://github.com/adiscope/Adiscope-iOS-Sample)
+[![GitHub package.json version](https://img.shields.io/badge/Unity-3.9.0-blue)](https://github.com/adiscope/Adiscope-Unity-UPM)
+[![GitHub package.json version](https://img.shields.io/badge/Flutter-3.9.0-blue)](https://pub.dev/packages/adiscope_flutter_plugin)
 
 - **${\color{red}Expo 지원 불가}$**
 - Android Target API Level : 31+
-- Android Minimum API Level : 15
-  - Admob, Pangle 사용 시 : 16
-  - Chartboost, Unityads, Vungle, Max 사용 시 : 21
+- Android Minimum API Level : 21
 - iOS Minimum Version : 12.0
 - Xcode Minimum Version : Xcode 15.1
 <br/>
@@ -49,7 +47,7 @@ npm install @adiscope.ad/adiscope-react-native
 
 #### B. Specific version Installation
 ```ruby
-npm install @adiscope.ad/adiscope-react-native@3.7.0
+npm install @adiscope.ad/adiscope-react-native@3.9.0
 ```
 - 프로젝트의 IDE루트 경로에서 터미널을 열고 위과 같이 특정 버전을 추가로 실행하여 설치    
 <br/><br/><br/>
@@ -89,14 +87,57 @@ android {
 <br/><br/><br/>
 
 ### 3. Setup iOS
-#### A. Pod Install
+#### A. Setup Podfile
+```ruby
+target 'AdiscopeReactNativeExample' do
+  config = use_native_modules!
+
+  pod 'AdiscopeMediaAdManager', '3.9.0'    // admanager
+  pod 'AdiscopeMediaAdMob', '3.9.0'        // admob
+  pod 'AdiscopeMediaAppLovin', '3.9.0'     // applovin
+  pod 'AdiscopeMediaChartBoost', '3.9.0'   // chartboost
+  pod 'AdiscopeMediaFAN', '3.9.0'          // fan
+  pod 'AdiscopeMediaMax', '3.9.0'          // max
+  pod 'AdiscopeMediaMobVista', '3.9.0'     // mobvista
+  pod 'AdiscopeMediaPangle', '3.9.0'       // pangle
+  pod 'AdiscopeMediaVungle', '3.9.0'       // vungle
+
+  use_react_native!(
+    :path => config[:reactNativePath],
+    # An absolute path to your application root.
+    :app_path => "#{Pod::Config.instance.installation_root}/.."
+  )
+
+  target 'AdiscopeReactNativeExampleTests' do
+    inherit! :complete
+    # Pods for testing
+  end
+
+  post_install do |installer|
+    # https://github.com/facebook/react-native/blob/main/packages/react-native/scripts/react_native_pods.rb#L197-L202
+    react_native_post_install(
+      installer,
+      config[:reactNativePath],
+      :mac_catalyst_enabled => false,
+      # :ccache_enabled => true
+    )
+  end
+end
+```
+- 프로젝트 파일 내에 {projectroot}/ios/Podfile 파일에 `pod` 추가
+- Third Party 네트워크사들을 확인 후 필요한 네트워크사들만 추가
+- Adapter Version이 상이할 경우 Initialize시 Xcode Log를 통해 확인 가능<br/>
+![AdapterChecked](https://github.com/user-attachments/assets/c0c4e33f-d535-45fb-8115-115e57c70522)<br/>
+<br/>
+
+#### B. Pod Install
 ```ruby
 pod install --repo-update
 ```
 - 프로젝트 파일 내에 ios 폴더에서 다음의 명령어를 실행해서 Library를 Xcode Project로 추가
 <br/>
 
-#### B. Setup Plist
+#### C. Setup Plist
 - 프로젝트 파일 내에 {projectroot}/ios/{프로젝트 이름}/Info.plist 파일에 추가
 
 ##### 가. AdiscopeMediaId, AdiscopeMediaSecret 추가
@@ -149,7 +190,7 @@ pod install --repo-update
 - AppLovinSdkKey의 Key 설정
 <br/>
 
-#### C. AppDelegate 추가
+#### D. AppDelegate 추가
 ##### 가. Max 사용 시 추가
 ###### a. Object-C
 ```object-c
@@ -588,7 +629,17 @@ const result = await getNetworksVersions4Adiscope();
 - Android와 iOS의 Third Party SDK Versions 확인
 <br/>
 
-#### C. Volume
+#### C. Set Rewarded Check Param
+```tsx
+const result = await setRewardedCheckParam4Adiscope(param);
+```
+- Rewarded callback 시 parameters을 추가
+- 해당 정보는 Rewarded 지급 등에 있어 구분하는데 사용 할 수 있음
+- 내부 설정 후 사용 가능 ( 담당자에게 요청 부탁 )
+- param은 Base64 Encoded(UTF8)를 처리 후 1000자내로 설정
+<br/>
+
+#### D. Volume
 ```tsx
 const isOff = true;  // Ad Sound Off
 const isOff = false; // Ad Sound On (Default)

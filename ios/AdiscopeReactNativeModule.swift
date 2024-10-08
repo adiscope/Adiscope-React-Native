@@ -29,6 +29,9 @@ class AdiscopeReactNativeModule: RCTEventEmitter {
             "onOfferwallAdOpened",
             "onOfferwallAdClosed",
             "onOfferwallAdFailedToShow",
+            "onAdEventOpened",
+            "onAdEventClosed",
+            "onAdEventFailedToShow",
             "onRewardedVideoAdLoaded",
             "onRewardedVideoAdFailedToLoad",
             "onRewardedVideoAdOpened",
@@ -82,6 +85,12 @@ class AdiscopeReactNativeModule: RCTEventEmitter {
     func setUserId(_ userId: String, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
         let result = adiscope.setUserId(userId)
         resolve(result)
+    }
+
+    @objc(setRewardedCheckParam:resolver:rejecter:)
+    func setRewardedCheckParam(_ param: String, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
+        adiscope.setRewardedCheckParam(param)
+        resolve(true)
     }
 
     @objc(getSDKVersion:rejecter:)
@@ -173,6 +182,30 @@ class AdiscopeReactNativeModule: RCTEventEmitter {
     func showOfferwallDetailFromUrl(_ url: String, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
         DispatchQueue.main.async {
             let result = self.adiscope.showOfferwallDetail(url)
+            resolve(result)
+        }
+    }
+
+
+    @objc
+    func onAdEventOpened(_ unitID: String!) {
+        sendEvent(withName: "onAdEventOpened", body: ["unitId": unitID])
+    }
+
+    @objc
+    func onAdEventClosed(_ unitID: String!) {
+        sendEvent(withName: "onAdEventClosed", body: ["unitId": unitID])
+    }
+
+    @objc
+    func onAdEventFailed(toShow unitID: String!, Error error: AdiscopeError!) {
+        sendEvent(withName: "onAdEventFailedToShow", body: ["unitId": unitID, "errorDescription": error.description])
+    }
+
+    @objc(showAdEvent:resolver:rejecter:)
+    func showAdEvent(_ unitId: String, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
+        DispatchQueue.main.async {
+            let result = self.adiscope.showAdEvent(unitId)
             resolve(result)
         }
     }
