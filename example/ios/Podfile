@@ -18,11 +18,11 @@ target 'AdiscopeReactNativeExample' do
   config = use_native_modules!
 
   pod 'AdiscopeMediaAdManager', '3.9.0'
-  pod 'AdiscopeMediaAdMob', '3.9.0'
+  pod 'AdiscopeMediaAdMob', '3.9.1'
   pod 'AdiscopeMediaAppLovin', '3.9.0'
   pod 'AdiscopeMediaChartBoost', '3.9.0'
-  pod 'AdiscopeMediaFAN', '3.9.0'
-  pod 'AdiscopeMediaMax', '3.9.0'
+  pod 'AdiscopeMediaFAN', '3.9.1'
+  pod 'AdiscopeMediaMax', '3.9.1'
   pod 'AdiscopeMediaMobVista', '3.9.0'
   pod 'AdiscopeMediaPangle', '3.9.0'
   pod 'AdiscopeMediaVungle', '3.9.0'
