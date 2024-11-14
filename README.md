@@ -1,9 +1,9 @@
 # Adiscope React Native
-[![GitHub package.json version](https://img.shields.io/badge/ReactNative-3.9.2-blue)](https://github.com/adiscope/Adiscope-React-Native/releases)
-[![GitHub package.json version](https://img.shields.io/badge/Android-3.9.2-blue)](https://github.com/adiscope/Adiscope-Android-Sample)
-[![GitHub package.json version](https://img.shields.io/badge/iOS-3.9.1-blue)](https://github.com/adiscope/Adiscope-iOS-Sample)
-[![GitHub package.json version](https://img.shields.io/badge/Unity-3.9.2-blue)](https://github.com/adiscope/Adiscope-Unity-UPM)
-[![GitHub package.json version](https://img.shields.io/badge/Flutter-3.9.2-blue)](https://pub.dev/packages/adiscope_flutter_plugin)
+[![GitHub package.json version](https://img.shields.io/badge/ReactNative-3.10.0-blue)](https://github.com/adiscope/Adiscope-React-Native/releases)
+[![GitHub package.json version](https://img.shields.io/badge/Android-3.10.0-blue)](https://github.com/adiscope/Adiscope-Android-Sample)
+[![GitHub package.json version](https://img.shields.io/badge/iOS-3.10.0-blue)](https://github.com/adiscope/Adiscope-iOS-Sample)
+[![GitHub package.json version](https://img.shields.io/badge/Unity-3.10.0-blue)](https://github.com/adiscope/Adiscope-Unity-UPM)
+[![GitHub package.json version](https://img.shields.io/badge/Flutter-3.10.0-blue)](https://pub.dev/packages/adiscope_flutter_plugin)
 
 - **${\color{red}Expo 지원 불가}$**
 - Android Target API Level : 31+
@@ -25,7 +25,8 @@
 - [RewardedVideo](#5-rewardedvideo)
 - [Interstitial](#6-interstitial)
 - [RewardedInterstitial](#7-rewardedinterstitial)
-- [Etc](#8-etc)
+- [AdEvent](#8-adevent)
+- [Etc](#9-etc)
 #### [웹사이트 필수 등록](#웹사이트-필수-등록-android-전용)
 #### [Adiscope Server 연동하기](./docs/reward_callback_info.md)
 #### [Privacy Manifest 정책 적용](#privacy-manifest-정책-적용-ios-전용)
@@ -47,7 +48,7 @@ npm install @adiscope.ad/adiscope-react-native
 
 #### B. Specific version Installation
 ```ruby
-npm install @adiscope.ad/adiscope-react-native@3.9.2
+npm install @adiscope.ad/adiscope-react-native@3.10.0
 ```
 - 프로젝트의 IDE루트 경로에서 터미널을 열고 위과 같이 특정 버전을 추가로 실행하여 설치    
 <br/><br/><br/>
@@ -62,7 +63,7 @@ npm install @adiscope.ad/adiscope-react-native@3.9.2
 </application>
 ```
 - Android 프로젝트의 `AndroidManifest.xml`파일에 다음과 같은 설정
-- meta-data 복사해서 변경 없이 추가 (아래 Module Gradle의 변수 값을 참조 함)
+- meta-data 복사해서 변경 없이 추가 (아래 B의 Module Gradle의 변수 값을 참조 함)
 <br/>
 
 #### B. Setup Module Gradle
@@ -92,15 +93,24 @@ android {
 target 'AdiscopeReactNativeExample' do
   config = use_native_modules!
 
-  pod 'AdiscopeMediaAdManager', '3.9.0'    // admanager
-  pod 'AdiscopeMediaAdMob', '3.9.1'        // admob
-  pod 'AdiscopeMediaAppLovin', '3.9.0'     // applovin
-  pod 'AdiscopeMediaChartBoost', '3.9.0'   // chartboost
-  pod 'AdiscopeMediaFAN', '3.9.1'          // fan
-  pod 'AdiscopeMediaMax', '3.9.1'          // max
-  pod 'AdiscopeMediaMobVista', '3.9.0'     // mobvista
-  pod 'AdiscopeMediaPangle', '3.9.0'       // pangle
-  pod 'AdiscopeMediaVungle', '3.9.0'       // vungle
+  pod 'AdiscopeMediaAdManager', '3.10.0'
+  pod 'AdiscopeMediaAdMob', '3.10.0'
+  pod 'AdiscopeMediaChartBoost', '3.10.0'
+  pod 'AdiscopeMediaPangle', '3.10.0'
+  pod 'AdiscopeMediaVungle', '3.10.0'
+  pod 'AdiscopeMediaMax', '3.10.0'
+  pod 'AdiscopeMediaMaxAdapterAdMob', '3.10.0'
+  pod 'AdiscopeMediaMaxAdapterAmazon', '3.10.0'
+  pod 'AdiscopeMediaMaxAdapterBidMachine', '3.10.0'
+  pod 'AdiscopeMediaMaxAdapterDTExchange', '3.10.0'
+  pod 'AdiscopeMediaMaxAdapterFan', '3.10.0'
+  pod 'AdiscopeMediaMaxAdapterInMobi', '3.10.0'
+  pod 'AdiscopeMediaMaxAdapterMobVista', '3.10.0'
+  pod 'AdiscopeMediaMaxAdapterMoloco', '3.10.0'
+  pod 'AdiscopeMediaMaxAdapterOgury', '3.10.0'
+  pod 'AdiscopeMediaMaxAdapterPangle', '3.10.0'
+  pod 'AdiscopeMediaMaxAdapterUnityAds', '3.10.0'
+  pod 'AdiscopeMediaMaxAdapterVungle', '3.10.0'
 
   use_react_native!(
     :path => config[:reactNativePath],
@@ -172,7 +182,7 @@ pod install --repo-update
 - SKAdNetwork Download File 내용 추가 ([Download](https://github.com/adiscope/Adiscope-iOS-Sample/releases/download/3.8.0/AdiscopeSkAdNetworks.plist))
 <br/>
 
-##### 라. Admob 사용 시 추가
+##### 라. Admob, Max의 Admob 사용 시 추가
 ```xml
 <key>GADIsAdManagerApp</key>
 <true/>
@@ -182,7 +192,7 @@ pod install --repo-update
 - "GADIsAdManagerApp" 설정 및 "GADApplicationIdentifier"의 Key 설정
 <br/>
 
-##### 마. Max, AppLovin 사용 시 추가
+##### 마. Max 사용 시 추가
 ```xml
 <key>AppLovinSdkKey</key>
 <string>{applovin_app_id 기입 필요}</string>
@@ -191,7 +201,7 @@ pod install --repo-update
 <br/>
 
 #### D. AppDelegate 추가
-##### 가. Max 사용 시 추가
+##### 가. Max의 InMobi 사용 시 추가
 ###### a. Object-C
 ```object-c
 @property (nonatomic, strong) UIWindow *window;
@@ -213,7 +223,7 @@ var window: UIWindow?
 import { initialize4Adiscope, isInitialize4Adiscope, setUserId4Adiscope } from '@adiscope.ad/adiscope-react-native';
 // Offerwall, RewardedVideo, Interstitial, RewardedInterstitial
 import { useOfferwall4Adiscope, useRewardedVideo4Adiscope, useInterstitial4Adiscope,
-  useRewardedInterstitial4Adiscope } from '@adiscope.ad/adiscope-react-native';
+  useRewardedInterstitial4Adiscope, useAdEvent4Adiscope } from '@adiscope.ad/adiscope-react-native';
 // Other
 import { getSDKVersion4Adiscope, getNetworksVersions4Adiscope, getUnitStatus4Adiscope, setVolumeOff4Adiscope, 
   showAdmobMediationDebugger4Adiscope, showMaxMediationDebugger4Adiscope } from '@adiscope.ad/adiscope-react-native';
@@ -228,7 +238,7 @@ const [statusInitialize, setStatusInitialize] = useState({
   isSuccess: false,
 });
 
-const result = await initialize4Adiscope()
+const result = await initialize4Adiscope();
 setStatusInitialize(result);
 ```
 - Android는 [AndroidManifest](#a-setup-androidmanifest) 파일과 [Module Gradle](#b-setup-module-gradle) 파일 세팅 필요
@@ -248,7 +258,7 @@ const mediaId = "";        // 관리자를 통해 발급
 const mediaSecret = "";    // 관리자를 통해 발급
 const callbackTag = "";    // 관리자를 통해 발급, 기본 ""
 const childYN = "";        // 어린이 여부를 설정 해주는 값(Google GMA에 세팅)
-const result = await initialize4Adiscope(mediaId, mediaSecret, callbackTag, childYN)
+const result = await initialize4Adiscope(mediaId, mediaSecret, callbackTag, childYN);
 setStatusInitialize(result);
 ```
 - App 실행 시 1회 설정 권장
@@ -614,7 +624,46 @@ useEffect(() => {
 - `failedToShowRewardedInterstitial4Adiscope`시 [AdiscopeError 참고](./docs/error_info.md)    
 <br/><br/><br/>
 
-### 8. Etc
+### 8. AdEvent
+#### A. Hook 호출
+```tsx
+const { showAdEvent4Adiscope, openedAdEvent4Adiscope, closedAdEvent4Adiscope, failedToShowAdEvent4Adiscope } = useAdEvent4Adiscope();
+```
+- 함수 및 콜백 변수를 사용 하기 위해서 선언
+<br/>
+
+#### B. Show
+```tsx
+const unitId = "";        // 관리자를 통해 발급
+await showAdEvent4Adiscope(unitId);
+```
+- `Show`가 실행되면 (return값이 True일 경우) `openedAdEvent4Adiscope`와 `failedToShowAdEvent4Adiscope` 중 하나가 항상 호출되고, `openedAdEvent4Adiscope`가 호출되었다면 이후 `closedAdEvent4Adiscope`가 항상 호출
+<br/>
+
+#### C. Callbacks
+```tsx
+useEffect(() => {
+  if (openedAdEvent4Adiscope) {
+    console.log(openedAdEvent4Adiscope['unitId']);
+  }
+}, [openedAdEvent4Adiscope]);
+useEffect(() => {
+  if (closedAdEvent4Adiscope) {
+    console.log(closedAdEvent4Adiscope['unitId']);
+  }
+}, [closedAdEvent4Adiscope]);
+useEffect(() => {
+  if (failedToShowAdEvent4Adiscope) {
+    console.log(failedToShowAdEvent4Adiscope['unitId'] + ", " + failedToShowAdEvent4Adiscope['errorDescription'] + ", " + failedToShowAdEvent4Adiscope['errorXB3TraceID']);
+  }
+}, [failedToShowAdEvent4Adiscope]);
+```
+- [Initialize](#2-initialize)를 실행 해야 Callbacks 호출
+- Show 성공 시 `openedAdEvent4Adiscope`, `closedAdEvent4Adiscope` callback이 순차적으로 호출
+- `failedToShowAdEvent4Adiscope`시 [AdiscopeError 참고](./docs/error_info.md)    
+<br/><br/><br/>
+
+### 9. Etc
 #### A. Adiscope SDK Version
 ```tsx
 const result = await getSDKVersion4Adiscope();
