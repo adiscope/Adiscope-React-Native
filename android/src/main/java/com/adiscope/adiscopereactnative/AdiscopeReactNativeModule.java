@@ -222,6 +222,7 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
       public void onOfferwallAdFailedToShow(String unitId, AdiscopeError adiscopeError) {
         WritableMap payload = Arguments.createMap();
         payload.putString("unitId", unitId);
+        payload.putInt("errorCode", adiscopeError.getCode());
         payload.putString("errorDescription", adiscopeError.getDescription());
         payload.putString("errorXB3TraceID", adiscopeError.getXb3TraceId());
         sendEvent("onOfferwallAdFailedToShow", payload);
@@ -302,6 +303,7 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
       public void onAdEventFailedToShow(String unitId, AdiscopeError adiscopeError) {
         WritableMap payload = Arguments.createMap();
         payload.putString("unitId", unitId);
+        payload.putInt("errorCode", adiscopeError.getCode());
         payload.putString("errorDescription", adiscopeError.getDescription());
         sendEvent("onAdEventFailedToShow", payload);
       }
@@ -339,6 +341,7 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
       public void onRewardedVideoAdFailedToLoad(String unitId, AdiscopeError adiscopeError) {
         WritableMap payload = Arguments.createMap();
         payload.putString("unitId", unitId);
+        payload.putInt("errorCode", adiscopeError.getCode());
         payload.putString("errorDescription", adiscopeError.getDescription());
         payload.putString("errorXB3TraceID", adiscopeError.getXb3TraceId());
         sendEvent("onRewardedVideoAdFailedToLoad", payload);
@@ -366,6 +369,7 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
       public void onRewardedVideoAdFailedToShow(String unitId, AdiscopeError adiscopeError) {
         WritableMap payload = Arguments.createMap();
         payload.putString("unitId", unitId);
+        payload.putInt("errorCode", adiscopeError.getCode());
         payload.putString("errorDescription", adiscopeError.getDescription());
         payload.putString("errorXB3TraceID", adiscopeError.getXb3TraceId());
         sendEvent("onRewardedVideoAdFailedToShow", payload);
@@ -419,6 +423,7 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
       public void onInterstitialAdFailedToLoad(AdiscopeError adiscopeError) {
         WritableMap payload = Arguments.createMap();
         payload.putString("unitId", "");
+        payload.putInt("errorCode", adiscopeError.getCode());
         payload.putString("errorDescription", adiscopeError.getDescription());
         payload.putString("errorXB3TraceID", adiscopeError.getXb3TraceId());
         sendEvent("onInterstitialAdFailedToLoad", payload);
@@ -439,6 +444,7 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
       public void onInterstitialAdFailedToShow(String unitId, AdiscopeError adiscopeError) {
         WritableMap payload = Arguments.createMap();
         payload.putString("unitId", unitId);
+        payload.putInt("errorCode", adiscopeError.getCode());
         payload.putString("errorDescription", adiscopeError.getDescription());
         payload.putString("errorXB3TraceID", adiscopeError.getXb3TraceId());
         sendEvent("onInterstitialAdFailedToShow", payload);
@@ -511,6 +517,7 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
       public void onRewardedInterstitialAdFailedToShow(String unitId, AdiscopeError adiscopeError) {
         WritableMap payload = Arguments.createMap();
         payload.putString("unitId", unitId);
+        payload.putInt("errorCode", adiscopeError.getCode());
         payload.putString("errorDescription", adiscopeError.getDescription());
         payload.putString("errorXB3TraceID", adiscopeError.getXb3TraceId());
         sendEvent("onRewardedInterstitialAdFailedToShow", payload);

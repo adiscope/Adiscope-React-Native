@@ -159,7 +159,7 @@ class AdiscopeReactNativeModule: RCTEventEmitter {
 
     @objc
     func onOfferwallAdFailed(toShow unitID: String!, Error error: AdiscopeError!) {
-        sendEvent(withName: "onOfferwallAdFailedToShow", body: ["unitId": unitID, "errorDescription": error.description, "errorXB3TraceID": error.getXB3TraceID() ?? ""])
+        sendEvent(withName: "onOfferwallAdFailedToShow", body: ["unitId": unitID ?? "", "errorCode": error.code, "errorDescription": error.description, "errorXB3TraceID": error.getXB3TraceID() ?? ""])
     }
 
     @objc(showOfferwall:excludeAdTypeList:resolver:rejecter:)
@@ -199,7 +199,7 @@ class AdiscopeReactNativeModule: RCTEventEmitter {
 
     @objc
     func onAdEventFailed(toShow unitID: String!, Error error: AdiscopeError!) {
-        sendEvent(withName: "onAdEventFailedToShow", body: ["unitId": unitID, "errorDescription": error.description])
+        sendEvent(withName: "onAdEventFailedToShow", body: ["unitId": unitID ?? "", "errorCode": error.code, "errorDescription": error.description])
     }
 
     @objc(showAdEvent:resolver:rejecter:)
@@ -218,7 +218,7 @@ class AdiscopeReactNativeModule: RCTEventEmitter {
 
     @objc
     func onRewardedVideoAdFailed(toLoad unitID: String!, Error error: AdiscopeError!) {
-        sendEvent(withName: "onRewardedVideoAdFailedToLoad", body: ["unitId": unitID, "errorDescription": error.description, "errorXB3TraceID": error.getXB3TraceID() ?? ""])
+        sendEvent(withName: "onRewardedVideoAdFailedToLoad", body: ["unitId": unitID ?? "", "errorCode": error.code, "errorDescription": error.description, "errorXB3TraceID": error.getXB3TraceID() ?? ""])
     }
 
     @objc
@@ -238,7 +238,7 @@ class AdiscopeReactNativeModule: RCTEventEmitter {
 
     @objc
     func onRewardedVideoAdFailed(toShow unitID: String!, Error error: AdiscopeError!) {
-        sendEvent(withName: "onRewardedVideoAdFailedToShow", body: ["unitId": unitID, "errorDescription": error.description, "errorXB3TraceID": error.getXB3TraceID() ?? ""])
+        sendEvent(withName: "onRewardedVideoAdFailedToShow", body: ["unitId": unitID ?? "", "errorCode": error.code, "errorDescription": error.description, "errorXB3TraceID": error.getXB3TraceID() ?? ""])
     }
 
     @objc(load:resolver:rejecter:)
@@ -269,7 +269,7 @@ class AdiscopeReactNativeModule: RCTEventEmitter {
 
     @objc
     func onInterstitialAdFailed(toLoad unitID: String!, Error error: AdiscopeError!) {
-        sendEvent(withName: "onInterstitialAdFailedToLoad", body: ["unitId": unitID, "errorDescription": error.description, "errorXB3TraceID": error.getXB3TraceID() ?? ""])
+        sendEvent(withName: "onInterstitialAdFailedToLoad", body: ["unitId": unitID ?? "", "errorCode": error.code, "errorDescription": error.description, "errorXB3TraceID": error.getXB3TraceID() ?? ""])
     }
 
     @objc
@@ -284,7 +284,7 @@ class AdiscopeReactNativeModule: RCTEventEmitter {
 
     @objc
     func onInterstitialAdFailed(toShow unitID: String!, Error error: AdiscopeError!) {
-        sendEvent(withName: "onInterstitialAdFailedToShow", body: ["unitId": unitID, "errorDescription": error.description, "errorXB3TraceID": error.getXB3TraceID() ?? ""])
+        sendEvent(withName: "onInterstitialAdFailedToShow", body: ["unitId": unitID ?? "", "errorCode": error.code, "errorDescription": error.description, "errorXB3TraceID": error.getXB3TraceID() ?? ""])
     }
 
     @objc(loadInterstitial:resolver:rejecter:)
@@ -336,7 +336,7 @@ class AdiscopeReactNativeModule: RCTEventEmitter {
 
     @objc
     func onRewardedInterstitialAdFailed(toShow unitID: String!, Error error: AdiscopeError!) {
-        sendEvent(withName: "onRewardedInterstitialAdFailedToShow", body: ["unitId": unitID, "errorDescription": error.description, "errorXB3TraceID": error.getXB3TraceID() ?? ""])
+        sendEvent(withName: "onRewardedInterstitialAdFailedToShow", body: ["unitId": unitID ?? "", "errorCode": error.code, "errorDescription": error.description, "errorXB3TraceID": error.getXB3TraceID() ?? ""])
     }
 
     @objc(getUnitStatusRewardedInterstitial:resolver:rejecter:)

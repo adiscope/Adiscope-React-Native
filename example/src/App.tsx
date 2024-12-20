@@ -324,7 +324,7 @@ export default function App() {
   }, [closedOfferwall4Adiscope]);
   useEffect(() => {
     if (failedToShowOfferwall4Adiscope) {
-      setLogText('onOfferwallAdFailedToShow => ' + failedToShowOfferwall4Adiscope['unitId'] + ", " + failedToShowOfferwall4Adiscope['errorDescription'] + ", " + failedToShowOfferwall4Adiscope['errorXB3TraceID']);
+      setLogText('onOfferwallAdFailedToShow => ' + failedToShowOfferwall4Adiscope['unitId'] + ", " + failedToShowOfferwall4Adiscope['errorCode'] + ", " + failedToShowOfferwall4Adiscope['errorDescription'] + ", " + failedToShowOfferwall4Adiscope['errorXB3TraceID']);
     }
   }, [failedToShowOfferwall4Adiscope]);
   // End Offerwall CallBack
@@ -342,7 +342,7 @@ export default function App() {
   }, [closedAdEvent4Adiscope]);
   useEffect(() => {
     if (failedToShowAdEvent4Adiscope) {
-      setLogText('onAdEventFailedToShow => ' + failedToShowAdEvent4Adiscope['unitId'] + ", " + failedToShowAdEvent4Adiscope['errorDescription']);
+      setLogText('onAdEventFailedToShow => ' + failedToShowAdEvent4Adiscope['unitId'] + ", " + failedToShowAdEvent4Adiscope['errorCode'] + ", " + failedToShowAdEvent4Adiscope['errorDescription']);
     }
   }, [failedToShowAdEvent4Adiscope]);
   // End AdEvent CallBack
@@ -355,7 +355,7 @@ export default function App() {
   }, [loadedRewardedVideo4Adiscope]);
   useEffect(() => {
     if (failedToLoadRewardedVideo4Adiscope) {
-      setLogText('onRewardedVideoAdFailedToLoad => ' + failedToLoadRewardedVideo4Adiscope['unitId'] + ", " + failedToLoadRewardedVideo4Adiscope['errorDescription'] + ", " + failedToLoadRewardedVideo4Adiscope['errorXB3TraceID']);
+      setLogText('onRewardedVideoAdFailedToLoad => ' + failedToLoadRewardedVideo4Adiscope['unitId'] + ", " + failedToLoadRewardedVideo4Adiscope['errorCode'] + ", " + failedToLoadRewardedVideo4Adiscope['errorDescription'] + ", " + failedToLoadRewardedVideo4Adiscope['errorXB3TraceID']);
     }
   }, [failedToLoadRewardedVideo4Adiscope]);
   useEffect(() => {
@@ -375,7 +375,7 @@ export default function App() {
   }, [rewardedRewardedVideo4Adiscope]);
   useEffect(() => {
     if (failedToShowRewardedVideo4Adiscope) {
-      setLogText('onRewardedVideoAdFailedToShow => ' + failedToShowRewardedVideo4Adiscope['unitId'] + ", " + failedToShowRewardedVideo4Adiscope['errorDescription'] + ", " + failedToShowRewardedVideo4Adiscope['errorXB3TraceID']);
+      setLogText('onRewardedVideoAdFailedToShow => ' + failedToShowRewardedVideo4Adiscope['unitId'] + ", " + failedToShowRewardedVideo4Adiscope['errorCode'] + ", " + failedToShowRewardedVideo4Adiscope['errorDescription'] + ", " + failedToShowRewardedVideo4Adiscope['errorXB3TraceID']);
     }
   }, [failedToShowRewardedVideo4Adiscope]);
   // End RewardedVideo CallBack
@@ -388,7 +388,7 @@ export default function App() {
   }, [loadedInterstitial4Adiscope]);
   useEffect(() => {
     if (failedToLoadInterstitial4Adiscope) {
-      setLogText('onInterstitialAdFailedToLoad => ' + failedToLoadInterstitial4Adiscope['unitId'] + ", " + failedToLoadInterstitial4Adiscope['errorDescription'] + ", " + failedToLoadInterstitial4Adiscope['errorXB3TraceID']);
+      setLogText('onInterstitialAdFailedToLoad => ' + failedToLoadInterstitial4Adiscope['unitId'] + ", " + failedToLoadInterstitial4Adiscope['errorCode'] + ", " + failedToLoadInterstitial4Adiscope['errorDescription'] + ", " + failedToLoadInterstitial4Adiscope['errorXB3TraceID']);
     }
   }, [failedToLoadInterstitial4Adiscope]);
   useEffect(() => {
@@ -403,7 +403,7 @@ export default function App() {
   }, [closedInterstitial4Adiscope]);
   useEffect(() => {
     if (failedToShowInterstitial4Adiscope) {
-      setLogText('onInterstitialAdFailedToShow => ' + failedToShowInterstitial4Adiscope['unitId'] + ", " + failedToShowInterstitial4Adiscope['errorDescription'] + ", " + failedToShowInterstitial4Adiscope['errorXB3TraceID']);
+      setLogText('onInterstitialAdFailedToShow => ' + failedToShowInterstitial4Adiscope['unitId'] + ", " + failedToShowInterstitial4Adiscope['errorCode'] + ", " + failedToShowInterstitial4Adiscope['errorDescription'] + ", " + failedToShowInterstitial4Adiscope['errorXB3TraceID']);
     }
   }, [failedToShowInterstitial4Adiscope]);
   // End Interstitial CallBack
@@ -434,7 +434,7 @@ export default function App() {
   }, [rewardedRewardedInterstitial4Adiscope]);
   useEffect(() => {
     if (failedToShowRewardedInterstitial4Adiscope) {
-      setLogText('onRewardedInterstitialAdFailedToShow => ' + failedToShowRewardedInterstitial4Adiscope['unitId'] + ", " + failedToShowRewardedInterstitial4Adiscope['errorDescription'] + ", " + failedToShowRewardedInterstitial4Adiscope['errorXB3TraceID']);
+      setLogText('onRewardedInterstitialAdFailedToShow => ' + failedToShowRewardedInterstitial4Adiscope['unitId'] + ", " + failedToShowRewardedInterstitial4Adiscope['errorCode'] + ", " + failedToShowRewardedInterstitial4Adiscope['errorDescription'] + ", " + failedToShowRewardedInterstitial4Adiscope['errorXB3TraceID']);
     }
   }, [failedToShowRewardedInterstitial4Adiscope]);
   // End RewardedInterstitial CallBack
