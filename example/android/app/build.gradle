@@ -80,7 +80,7 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
-        versionName "3.10.5"
+        versionName "3.10.6"
         manifestPlaceholders = [
             adiscope_media_id    : "",
             adiscope_media_secret: "",
