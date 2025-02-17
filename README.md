@@ -1,8 +1,8 @@
 # Adiscope React Native
-[![GitHub package.json version](https://img.shields.io/badge/ReactNative-3.10.3-blue)](https://github.com/adiscope/Adiscope-React-Native/releases)
-[![GitHub package.json version](https://img.shields.io/badge/Android-3.10.3-blue)](https://github.com/adiscope/Adiscope-Android-Sample)
+[![GitHub package.json version](https://img.shields.io/badge/ReactNative-3.10.5-blue)](https://github.com/adiscope/Adiscope-React-Native/releases)
+[![GitHub package.json version](https://img.shields.io/badge/Android-3.10.5-blue)](https://github.com/adiscope/Adiscope-Android-Sample)
 [![GitHub package.json version](https://img.shields.io/badge/iOS-3.10.3-blue)](https://github.com/adiscope/Adiscope-iOS-Sample)
-[![GitHub package.json version](https://img.shields.io/badge/Unity-3.10.3-blue)](https://github.com/adiscope/Adiscope-Unity-UPM)
+[![GitHub package.json version](https://img.shields.io/badge/Unity-3.10.5-blue)](https://github.com/adiscope/Adiscope-Unity-UPM)
 [![GitHub package.json version](https://img.shields.io/badge/Flutter-3.10.3-blue)](https://pub.dev/packages/adiscope_flutter_plugin)
 
 - **${\color{red}Expo 지원 불가}$**
@@ -48,7 +48,7 @@ npm install @adiscope.ad/adiscope-react-native
 
 #### B. Specific version Installation
 ```ruby
-npm install @adiscope.ad/adiscope-react-native@3.10.3
+npm install @adiscope.ad/adiscope-react-native@3.10.5
 ```
 - 프로젝트의 IDE루트 경로에서 터미널을 열고 위과 같이 특정 버전을 추가로 실행하여 설치    
 <br/><br/><br/>
