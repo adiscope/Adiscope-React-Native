@@ -707,6 +707,7 @@ const styles = StyleSheet.create({
     height: 30,
     flex: 1,
     padding: 6,
+    color: 'black',
     borderColor: 'gray',
     borderWidth: 1,
     borderRadius: 5,
