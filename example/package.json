@@ -1,6 +1,6 @@
 {
   "name": "@adiscope.ad/adiscope-react-native-example",
-  "version": "4.1.0",
+  "version": "4.1.3",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
