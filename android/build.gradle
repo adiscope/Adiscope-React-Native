@@ -79,7 +79,7 @@ dependencies {
   implementation "com.facebook.react:react-native:+"
 
   // [required] adiscope core library
-  implementation 'com.nps.adiscope:adiscopeCore:4.2.0'
+  implementation 'com.nps.adiscope:adiscopeCore:4.3.0'
   implementation 'com.nps.adiscope:adiscopeAndroid:1.2.2'
   implementation 'com.nps.adiscope:adapter.admob:23.5.0.1'            // admob
   implementation 'com.nps.adiscope:adapter.max:13.0.1.3'              // max

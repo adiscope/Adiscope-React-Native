@@ -93,16 +93,19 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
       @Override
       public void onInitialized(boolean isSuccess) {
         if (isSuccess) {
-          mOfferwallAd = AdiscopeSdk.getOfferwallAdInstance(getCurrentActivity());
-          mOfferwallAd.setOfferwallAdListener(mOfferwallAdListener());
-          mAdEvent = AdiscopeSdk.getAdEventInstance(getCurrentActivity());
-          mAdEvent.setAdEventListener(mAdEventListener());
-          mRewardedVideoAd = AdiscopeSdk.getRewardedVideoAdInstance(getCurrentActivity());
-          mRewardedVideoAd.setRewardedVideoAdListener(mRewardedVideoAdListener());
-          mInterstitialAd = AdiscopeSdk.getInterstitialAdInstance(getCurrentActivity());
-          mInterstitialAd.setInterstitialAdListener(mInterstitialAdListener());
-          mRewardedInterstitialAd = AdiscopeSdk.getRewardedInterstitialAdInstance(getCurrentActivity());
-          mRewardedInterstitialAd.setRewardedInterstitialAdListener(mRewardedInterstitialAdListener());
+          Activity currentActivity = getCurrentActivity();
+          if (currentActivity != null) {
+            mOfferwallAd = AdiscopeSdk.getOfferwallAdInstance(getCurrentActivity());
+            if (mOfferwallAd != null) mOfferwallAd.setOfferwallAdListener(mOfferwallAdListener());
+            mAdEvent = AdiscopeSdk.getAdEventInstance(getCurrentActivity());
+            if (mAdEvent != null) mAdEvent.setAdEventListener(mAdEventListener());
+            mRewardedVideoAd = AdiscopeSdk.getRewardedVideoAdInstance(getCurrentActivity());
+            if (mRewardedVideoAd != null) mRewardedVideoAd.setRewardedVideoAdListener(mRewardedVideoAdListener());
+            mInterstitialAd = AdiscopeSdk.getInterstitialAdInstance(getCurrentActivity());
+            if (mInterstitialAd != null) mInterstitialAd.setInterstitialAdListener(mInterstitialAdListener());
+            mRewardedInterstitialAd = AdiscopeSdk.getRewardedInterstitialAdInstance(getCurrentActivity());
+            if (mRewardedInterstitialAd != null) mRewardedInterstitialAd.setRewardedInterstitialAdListener(mRewardedInterstitialAdListener());
+          }
         }
 
         WritableMap result = Arguments.createMap();
@@ -239,6 +242,10 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void showOfferwall(String unitId, ReadableArray excludeAdTypeList, Promise promise) {
     Activity currentActivity = getCurrentActivity();
+    if (currentActivity != null && mOfferwallAd == null) {
+      mOfferwallAd = AdiscopeSdk.getOfferwallAdInstance(currentActivity);
+      if (mOfferwallAd != null) mOfferwallAd.setOfferwallAdListener(mOfferwallAdListener());
+    }
     if (currentActivity != null && mOfferwallAd != null) {
       List<String> list = new ArrayList<>();
       if (excludeAdTypeList != null) {
@@ -260,6 +267,10 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void showOfferwallDetail(String unitId, String detailId, ReadableArray excludeAdTypeList, Promise promise) {
     Activity currentActivity = getCurrentActivity();
+    if (currentActivity != null && mOfferwallAd == null) {
+      mOfferwallAd = AdiscopeSdk.getOfferwallAdInstance(currentActivity);
+      if (mOfferwallAd != null) mOfferwallAd.setOfferwallAdListener(mOfferwallAdListener());
+    }
     if (currentActivity != null && mOfferwallAd != null) {
       List<String> list = new ArrayList<>();
       if (excludeAdTypeList != null) {
@@ -282,6 +293,10 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void showOfferwallDetailFromUrl(String url, Promise promise) {
     Activity currentActivity = getCurrentActivity();
+    if (currentActivity != null && mOfferwallAd == null) {
+      mOfferwallAd = AdiscopeSdk.getOfferwallAdInstance(currentActivity);
+      if (mOfferwallAd != null) mOfferwallAd.setOfferwallAdListener(mOfferwallAdListener());
+    }
     if (currentActivity != null && mOfferwallAd != null) {
       mOfferwallAd.showDetail(currentActivity, url);
       promise.resolve(true);
@@ -319,6 +334,10 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void showAdEvent(String unitId, Promise promise) {
     Activity currentActivity = getCurrentActivity();
+    if (currentActivity != null && mAdEvent == null) {
+      mAdEvent = AdiscopeSdk.getAdEventInstance(currentActivity);
+      if (mAdEvent != null) mAdEvent.setAdEventListener(mAdEventListener());
+    }
     if (currentActivity != null && mAdEvent != null) {
       mAdEvent.show(currentActivity, unitId);
       promise.resolve(true);
@@ -379,6 +398,13 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void load(String unitId, Promise promise) {
+    if (mRewardedVideoAd == null) {
+      Activity currentActivity = getCurrentActivity();
+      if (currentActivity != null) {
+        mRewardedVideoAd = AdiscopeSdk.getRewardedVideoAdInstance(currentActivity);
+        if (mRewardedVideoAd != null) mRewardedVideoAd.setRewardedVideoAdListener(mRewardedVideoAdListener());
+      }
+    }
     if (mRewardedVideoAd != null) {
       mRewardedVideoAd.load(unitId);
       promise.resolve(true);
@@ -390,6 +416,13 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void isLoaded(String unitId, Promise promise) {
+    if (mRewardedVideoAd == null) {
+      Activity currentActivity = getCurrentActivity();
+      if (currentActivity != null) {
+        mRewardedVideoAd = AdiscopeSdk.getRewardedVideoAdInstance(currentActivity);
+        if (mRewardedVideoAd != null) mRewardedVideoAd.setRewardedVideoAdListener(mRewardedVideoAdListener());
+      }
+    }
     if (mRewardedVideoAd != null) {
       boolean result = mRewardedVideoAd.isLoaded(unitId);
       promise.resolve(result);
@@ -401,6 +434,13 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
  
   @ReactMethod
   public void show(Promise promise) {
+    if (mRewardedVideoAd == null) {
+      Activity currentActivity = getCurrentActivity();
+      if (currentActivity != null) {
+        mRewardedVideoAd = AdiscopeSdk.getRewardedVideoAdInstance(currentActivity);
+        if (mRewardedVideoAd != null) mRewardedVideoAd.setRewardedVideoAdListener(mRewardedVideoAdListener());
+      }
+    }
     if (mRewardedVideoAd != null) {
       boolean result = mRewardedVideoAd.show();
       promise.resolve(result);
@@ -454,6 +494,13 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void loadInterstitial(String unitId, Promise promise) {
+    if (mInterstitialAd == null) {
+      Activity currentActivity = getCurrentActivity();
+      if (currentActivity != null) {
+        mInterstitialAd = AdiscopeSdk.getInterstitialAdInstance(currentActivity);
+        if (mInterstitialAd != null) mInterstitialAd.setInterstitialAdListener(mInterstitialAdListener());
+      }
+    }
     if (mInterstitialAd != null) {
       mInterstitialAd.load(unitId);
       promise.resolve(true);
@@ -465,6 +512,13 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void isLoadedInterstitial(String unitId, Promise promise) {
+    if (mInterstitialAd == null) {
+      Activity currentActivity = getCurrentActivity();
+      if (currentActivity != null) {
+        mInterstitialAd = AdiscopeSdk.getInterstitialAdInstance(currentActivity);
+        if (mInterstitialAd != null) mInterstitialAd.setInterstitialAdListener(mInterstitialAdListener());
+      }
+    }
     if (mInterstitialAd != null) {
       boolean result = mInterstitialAd.isLoaded(unitId);
       promise.resolve(result);
@@ -476,6 +530,13 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
  
   @ReactMethod
   public void showInterstitial(Promise promise) {
+    if (mInterstitialAd == null) {
+      Activity currentActivity = getCurrentActivity();
+      if (currentActivity != null) {
+        mInterstitialAd = AdiscopeSdk.getInterstitialAdInstance(currentActivity);
+        if (mInterstitialAd != null) mInterstitialAd.setInterstitialAdListener(mInterstitialAdListener());
+      }
+    }
     if (mInterstitialAd != null) {
       boolean result = mInterstitialAd.show();
       promise.resolve(result);
@@ -527,6 +588,13 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void getUnitStatusRewardedInterstitial(String unitId, Promise promise) {
+    if (mRewardedInterstitialAd == null) {
+      Activity currentActivity = getCurrentActivity();
+      if (currentActivity != null) {
+        mRewardedInterstitialAd = AdiscopeSdk.getRewardedInterstitialAdInstance(currentActivity);
+        if (mRewardedInterstitialAd != null) mRewardedInterstitialAd.setRewardedInterstitialAdListener(mRewardedInterstitialAdListener());
+      }
+    }
     if (mRewardedInterstitialAd != null) {
       mRewardedInterstitialAd.getUnitStatus(unitId, new IUnitStatus() {
         @Override
@@ -546,6 +614,13 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void preLoadAllRewardedInterstitial(Promise promise) {
+    if (mRewardedInterstitialAd == null) {
+      Activity currentActivity = getCurrentActivity();
+      if (currentActivity != null) {
+        mRewardedInterstitialAd = AdiscopeSdk.getRewardedInterstitialAdInstance(currentActivity);
+        if (mRewardedInterstitialAd != null) mRewardedInterstitialAd.setRewardedInterstitialAdListener(mRewardedInterstitialAdListener());
+      }
+    }
     if (mRewardedInterstitialAd != null) {
       mRewardedInterstitialAd.preloadAll();
       promise.resolve(true);
@@ -557,6 +632,13 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void preLoadRewardedInterstitial(ReadableArray unitIdList, Promise promise) {
+    if (mRewardedInterstitialAd == null) {
+      Activity currentActivity = getCurrentActivity();
+      if (currentActivity != null) {
+        mRewardedInterstitialAd = AdiscopeSdk.getRewardedInterstitialAdInstance(currentActivity);
+        if (mRewardedInterstitialAd != null) mRewardedInterstitialAd.setRewardedInterstitialAdListener(mRewardedInterstitialAdListener());
+      }
+    }
     if (mRewardedInterstitialAd != null) {
       List<String> list = new ArrayList<>();
       if (unitIdList != null) {
@@ -577,6 +659,13 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void showRewardedInterstitial(String unitId, Promise promise) {
+    if (mRewardedInterstitialAd == null) {
+      Activity currentActivity = getCurrentActivity();
+      if (currentActivity != null) {
+        mRewardedInterstitialAd = AdiscopeSdk.getRewardedInterstitialAdInstance(currentActivity);
+        if (mRewardedInterstitialAd != null) mRewardedInterstitialAd.setRewardedInterstitialAdListener(mRewardedInterstitialAdListener());
+      }
+    }
     if (mRewardedInterstitialAd != null) {
       mRewardedInterstitialAd.show(unitId);
       promise.resolve(true);

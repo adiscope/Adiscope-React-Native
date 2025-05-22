@@ -8,8 +8,6 @@
 	<string></string>
 	<key>GADApplicationIdentifier</key>
 	<string></string>
-	<key>AppLovinSdkKey</key>
-	<string></string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
