@@ -330,8 +330,8 @@ class AdiscopeReactNativeModule: RCTEventEmitter {
     }
 
     @objc
-    func onRewardedInterstitialAdRewarded(_ unitID: String!, item: AdiscopeRewardItem!) {
-        sendEvent(withName: "onRewardedInterstitialAdRewarded", body: ["unit": item.unit ?? "", "amount": item.amount])
+    func onRewardedInterstitialRewarded(_ unitID: String!, Item: AdiscopeRewardItem!) {
+        sendEvent(withName: "onRewardedInterstitialAdRewarded", body: ["unit": Item.unit ?? "", "amount": Item.amount])
     }
 
     @objc

@@ -1,11 +1,11 @@
 # Adiscope React Native
-[![GitHub package.json version](https://img.shields.io/badge/ReactNative-4.3.1-blue)](https://github.com/adiscope/Adiscope-React-Native/releases)
-[![GitHub package.json version](https://img.shields.io/badge/Android-4.3.1-blue)](https://github.com/adiscope/Adiscope-Android-Sample)
-[![GitHub package.json version](https://img.shields.io/badge/iOS-4.3.0-blue)](https://github.com/adiscope/Adiscope-iOS-Sample)
-[![GitHub package.json version](https://img.shields.io/badge/Unity-4.3.1-blue)](https://github.com/adiscope/Adiscope-Unity-UPM)
-[![GitHub package.json version](https://img.shields.io/badge/Flutter-4.3.1-blue)](https://pub.dev/packages/adiscope_flutter_plugin)
+[![GitHub package.json version](https://img.shields.io/badge/ReactNative-4.4.0-blue)](https://github.com/adiscope/Adiscope-React-Native/releases)
+[![GitHub package.json version](https://img.shields.io/badge/Android-4.4.0-blue)](https://github.com/adiscope/Adiscope-Android-Sample)
+[![GitHub package.json version](https://img.shields.io/badge/iOS-4.4.0-blue)](https://github.com/adiscope/Adiscope-iOS-Sample)
+[![GitHub package.json version](https://img.shields.io/badge/Unity-4.4.0-blue)](https://github.com/adiscope/Adiscope-Unity-UPM)
+[![GitHub package.json version](https://img.shields.io/badge/Flutter-4.4.0-blue)](https://pub.dev/packages/adiscope_flutter_plugin)
 
-- **${\color{red}Expo 지원 불가}$**
+- ⚠️ **Expo 지원 불가**
 - Android Target API Level : 31+
 - Android Minimum API Level : 21
 - iOS Minimum Version : 13.0
@@ -75,7 +75,7 @@ npm install @adiscope.ad/adiscope-react-native
 
 #### B. Specific version Installation
 ```ruby
-npm install @adiscope.ad/adiscope-react-native@4.3.1
+npm install @adiscope.ad/adiscope-react-native@4.4.0
 ```
 - 프로젝트의 IDE루트 경로에서 터미널을 열고 위과 같이 특정 버전을 추가로 실행하여 설치    
 <br/><br/><br/>
@@ -268,7 +268,7 @@ setStatusInitialize(result);
 - iOS는 [Plist](#가-adiscopemediaid-adiscopemediasecret-추가) 파일 세팅 필요
 - App 실행 시 1회 설정 권장
 - Adiscope에서는 Google Play 가족 정책을 준수해야 함 (Android 전용 - [Adiscope Google Play 가족 정책 확인](./docs/familiespolicy.md))
-  - ${정책\ {\color{red}미준수시}}\ 광고에\ 제한이\ 생김$ (광고 물량 축소 및 오퍼월 진입 불가)
+  - ⚠️ 정책 미준수시 광고에 제한이 생김 (광고 물량 축소 및 오퍼월 진입 불가)
 <br/>
 
 #### B. Code에서 직접 Media 넣어서 Initialize 방법
@@ -286,7 +286,7 @@ setStatusInitialize(result);
 ```
 - App 실행 시 1회 설정 권장
 - Adiscope에서는 Google Play 가족 정책을 준수해야 함 (Android 전용 - [Adiscope Google Play 가족 정책 확인](./docs/familiespolicy.md))
-  - ${정책\ {\color{red}미준수시}}\ 광고에\ 제한이\ 생김$ (광고 물량 축소 및 오퍼월 진입 불가)
+  - ⚠️ 정책 미준수시 광고에 제한이 생김 (광고 물량 축소 및 오퍼월 진입 불가)
 <br/>
 
 #### C. Callbacks
@@ -304,7 +304,7 @@ useEffect(() => {
 const userId = "";        // set unique user id to identify the user in reward information
 await setUserId4Adiscope(userId);
 ```
-- `Offerwall`, `RewardedVideo`, `RewardedInterstitial`를 사용하기 위해 ${\color{red}필수}$ 설정
+- ⚠️ `Offerwall`, `RewardedVideo`, `RewardedInterstitial`를 사용하기 위해 필수 설정
 - 64자까지 설정 가능    
 <br/><br/><br/>
 
