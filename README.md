@@ -12,28 +12,33 @@
 - Xcode Minimum Version : Xcode 16.0
 <details>
 <summary>Networks Version</summary>
-<div markdown="1">  
+<div markdown="1">
 
 | Ad Network          | Android Version | iOS Version |
 |---------------------|-----------------|-------------|
-| AdMob               | 23.5.0          | 12.2.0      |
-| Amazon              | 9.10.4          | 5.1.0       |
-| AppLovin            | 13.0.1          | 13.1.0      |
-| BidMachine          | 3.0.1           | 3.2.1       |
-| Chartboost          | 9.8.2           | 9.8.1       |
-| DT Exchange         | 8.3.5           | 8.3.5       |
-| InMobi              | 10.7.8          | 10.8.2      |
-| Ironsource          | 8.7.0           | 8.8.0.0     |
-| Liftoff(Vungle)     | 7.4.2           | 7.4.4       |
-| Meta(Fan)           | 6.18.0          | 6.17.1      |
-| Mintegral(Mobvista) | 16.9.41         | 7.7.7       |
-| Moloco              | 3.6.1           | 3.7.2       |
-| Ogury               | 5.8.0           | 5.0.2       |
-| Pangle              | 6.5.0.4         | 6.5.0.9     |
-| Smaato              | 22.7.1          | 없음         |
-| Unity Ads           | 4.13.2          | 4.14.0      |
-| Verve               | 3.3.0           | 없음         |
-| Yandex              | 7.9.0           | 없음         |
+| AdMob               | 24.4.0          | 12.2.0      |
+| Amazon              | 11.0.1          | 5.1.0       |
+| AppLovin            | 13.3.1          | 13.1.0      |
+| BidMachine          | 3.3.0           | 3.2.1       |
+| Chartboost          | 9.8.3           | 9.8.1       |
+| DT Exchange         | 8.3.7           | 8.3.5       |
+| InMobi              | 10.8.3          | 10.8.2      |
+| Ironsource          | 8.9.1           | 8.8.0.0     |
+| Liftoff(Vungle)     | 7.5.0           | 7.4.4       |
+| Meta(Fan)           | 6.20.0          | 6.17.1      |
+| Mintegral(Mobvista) | 16.9.71         | 7.7.7       |
+| Moloco              | 3.10.0          | 3.7.2       |
+| Ogury               | 6.0.1           | 5.0.2       |
+| Pangle              | 7.2.0.4         | 6.5.0.9     |
+| Smaato              | 22.7.2          | 없음         |
+| Unity Ads           | 4.15.0          | 4.14.0      |
+| Verve               | 3.6.0           | 없음         |
+| Yandex              | 7.13.0          | 없음         |
+
+> 기존 gms SDK 사용중인 퍼블리셔는 admob 혹은 max 어댑터 사용 시 24버전으로 마이그레이션 필요 [(관련 문서)](https://developers.google.com/admob/android/migration?hl=en)
+> - gms 22 버전: 애디스콥 `4.1.0` 미만
+> - gms 23 버전: 애디스콥 `4.4.0` 미만
+> - gms 24 버전: 애디스콥 `4.4.0` 이상
 
 </div>
 </details>
@@ -77,7 +82,7 @@ npm install @adiscope.ad/adiscope-react-native
 ```ruby
 npm install @adiscope.ad/adiscope-react-native@4.4.0
 ```
-- 프로젝트의 IDE루트 경로에서 터미널을 열고 위과 같이 특정 버전을 추가로 실행하여 설치    
+- 프로젝트의 IDE루트 경로에서 터미널을 열고 위과 같이 특정 버전을 추가로 실행하여 설치
 <br/><br/><br/>
 
 ### 2. Setup Android
@@ -111,7 +116,7 @@ android {
 - adiscope_media_secret: 매체 시크릿키
 - adiscope_sub_domain: 옵션값 (오퍼월 상세페이지 이동 기능, 필요시 담당자 전달 예정)
 - adiscope_admob_id: admob을 접속 하기 위한 키
-- 프로젝트 파일 내에 {projectroot}/android/app/build.gradle 파일에 `manifestPlaceholders` 추가    
+- 프로젝트 파일 내에 {projectroot}/android/app/build.gradle 파일에 `manifestPlaceholders` 추가
 <br/><br/><br/>
 
 ### 3. Setup iOS
@@ -248,10 +253,10 @@ import { initialize4Adiscope, isInitialize4Adiscope, setUserId4Adiscope } from '
 import { useOfferwall4Adiscope, useRewardedVideo4Adiscope, useInterstitial4Adiscope,
   useRewardedInterstitial4Adiscope, useAdEvent4Adiscope } from '@adiscope.ad/adiscope-react-native';
 // Other
-import { getSDKVersion4Adiscope, getNetworksVersions4Adiscope, getUnitStatus4Adiscope, setVolumeOff4Adiscope, 
+import { getSDKVersion4Adiscope, getNetworksVersions4Adiscope, getUnitStatus4Adiscope, setVolumeOff4Adiscope,
   showAdmobMediationDebugger4Adiscope, showMaxMediationDebugger4Adiscope } from '@adiscope.ad/adiscope-react-native';
 ```
-- Adiscope을 사용하기 위해서 추가    
+- Adiscope을 사용하기 위해서 추가
 <br/><br/><br/>
 
 ### 2. Initialize
@@ -296,7 +301,7 @@ useEffect(() => {
 }, [statusInitialize]);
 ```
 - [Initialize](#2-initialize)를 실행 해야 Callbacks 호출
-- statusInitialize로 Initialize 결과를 받을 수 있음    
+- statusInitialize로 Initialize 결과를 받을 수 있음
 <br/><br/><br/>
 
 ### 3. 사용자 정보 설정
@@ -305,13 +310,13 @@ const userId = "";        // set unique user id to identify the user in reward i
 await setUserId4Adiscope(userId);
 ```
 - ⚠️ `Offerwall`, `RewardedVideo`, `RewardedInterstitial`를 사용하기 위해 필수 설정
-- 64자까지 설정 가능    
+- 64자까지 설정 가능
 <br/><br/><br/>
 
 ### 4. Offerwall
 #### A. Hook 호출
 ```tsx
-const { showOfferwall4Adiscope, showOfferwallDetail4Adiscope, showOfferwallDetailFromUrl4Adiscope, 
+const { showOfferwall4Adiscope, showOfferwallDetail4Adiscope, showOfferwallDetailFromUrl4Adiscope,
   openedOfferwall4Adiscope, closedOfferwall4Adiscope, failedToShowOfferwall4Adiscope } = useOfferwall4Adiscope();
 ```
 - 함수 및 콜백 변수를 사용 하기 위해서 선언
@@ -345,7 +350,7 @@ useEffect(() => {
 ```
 - [Initialize](#2-initialize)를 실행 해야 Callbacks 호출
 - Show 성공 시 `openedOfferwall4Adiscope`, `closedOfferwall4Adiscope` callback이 순차적으로 호출
-- `failedToShowOfferwall4Adiscope`시 [AdiscopeError 참고](./docs/error_info.md)    
+- `failedToShowOfferwall4Adiscope`시 [AdiscopeError 참고](./docs/error_info.md)
 <br/><br/><br/>
 
 ### 5. RewardedVideo
@@ -372,7 +377,7 @@ await loadRewardedVideo4Adiscope(unitId);
 - Load를 한 후 Show를 하고, 광고를 Show한 후에는 다시 Load를 하여 다음 번 Show를 준비
 - Load & Show 후 다시 Load를 하려 할 때 Load 는 Show 이후 언제든 호출가능
   - 광고가 Show되는 동안 다음 광고를 load를 할 수도 있지만 이는 사용하는 mediation ad network company의 종류에 따라 달라질 수 있으므로 항상 보장되는 동작은 아님
-- Show의 callback 인 `closedRewardedVideo4Adiscope`에서 다시 Load를 하는 것을 권장 
+- Show의 callback 인 `closedRewardedVideo4Adiscope`에서 다시 Load를 하는 것을 권장
   - Abusing 방지를 위해 Rewarded Video Ad를 연속으로 보여주는 것을 제한하여 한번 광고를 보고 나면 일정 시간이 지난 후에 다시 Show를 할 수 있도로록 Admin page에서 서비스 설정 가능
 - (**Optional**) Load의 시간이 필요해 ProgressBar 노출 추천
 <br/>
@@ -461,8 +466,8 @@ useEffect(() => {
 ```
 - [Initialize](#2-initialize)를 실행 해야 Callbacks 호출
 - `Load` 성공 시 `loadedRewardedVideo4Adiscope`, 실패 시 `failedToLoadRewardedVideo4Adiscope`가 호출
-- `Show` 성공 시 `openedRewardedVideo4Adiscope`, `closedRewardedVideo4Adiscope`가 순차적으로 호출되고, 실패시 `failedToShowRewardedVideo4Adiscope`가 호출    
-- `failedToLoadRewardedVideo4Adiscope`, `failedToShowRewardedVideo4Adiscope`시 [AdiscopeError 참고](./docs/error_info.md)    
+- `Show` 성공 시 `openedRewardedVideo4Adiscope`, `closedRewardedVideo4Adiscope`가 순차적으로 호출되고, 실패시 `failedToShowRewardedVideo4Adiscope`가 호출
+- `failedToLoadRewardedVideo4Adiscope`, `failedToShowRewardedVideo4Adiscope`시 [AdiscopeError 참고](./docs/error_info.md)
 <br/><br/><br/>
 
 ### 6. Interstitial
@@ -555,8 +560,8 @@ useEffect(() => {
 ```
 - [Initialize](#2-initialize)를 실행 해야 Callbacks 호출
 - `Load` 성공 시 `loadedInterstitial4Adiscope`, 실패 시 `failedToLoadInterstitial4Adiscope`가 호출
-- `Show` 성공 시 `openedInterstitial4Adiscope`, `closedInterstitial4Adiscope`가 순차적으로 호출되고, 실패 시 `failedToShowInterstitial4Adiscope`가 호출    
-- `failedToLoadInterstitial4Adiscope`, `failedToShowInterstitial4Adiscope`시 [AdiscopeError 참고](./docs/error_info.md)    
+- `Show` 성공 시 `openedInterstitial4Adiscope`, `closedInterstitial4Adiscope`가 순차적으로 호출되고, 실패 시 `failedToShowInterstitial4Adiscope`가 호출
+- `failedToLoadInterstitial4Adiscope`, `failedToShowInterstitial4Adiscope`시 [AdiscopeError 참고](./docs/error_info.md)
 <br/><br/><br/>
 
 ### 7. RewardedInterstitial
@@ -643,8 +648,8 @@ useEffect(() => {
 ```
 - [Initialize](#2-initialize)를 실행 해야 Callbacks 호출
 - Show 성공 후 Skip 시 `skipRewardedInterstitial4Adiscope`가 호출
-- Show 성공 후 영상 시청 시 `openedRewardedInterstitial4Adiscope`, `closedRewardedInterstitial4Adiscope`가 순차적으로 호출되고, 실패 시 `failedToShowRewardedInterstitial4Adiscope`가 호출    
-- `failedToShowRewardedInterstitial4Adiscope`시 [AdiscopeError 참고](./docs/error_info.md)    
+- Show 성공 후 영상 시청 시 `openedRewardedInterstitial4Adiscope`, `closedRewardedInterstitial4Adiscope`가 순차적으로 호출되고, 실패 시 `failedToShowRewardedInterstitial4Adiscope`가 호출
+- `failedToShowRewardedInterstitial4Adiscope`시 [AdiscopeError 참고](./docs/error_info.md)
 <br/><br/><br/>
 
 ### 8. AdEvent
@@ -683,7 +688,7 @@ useEffect(() => {
 ```
 - [Initialize](#2-initialize)를 실행 해야 Callbacks 호출
 - Show 성공 시 `openedAdEvent4Adiscope`, `closedAdEvent4Adiscope` callback이 순차적으로 호출
-- `failedToShowAdEvent4Adiscope`시 [AdiscopeError 참고](./docs/error_info.md)    
+- `failedToShowAdEvent4Adiscope`시 [AdiscopeError 참고](./docs/error_info.md)
 <br/><br/><br/>
 
 ### 9. Etc
@@ -722,7 +727,7 @@ if (isOff) {
   console.log("Ad Sound On");
 }
 ```
-- `Admob`, `AppLovin`, `Mintegral`, `Verve` 만 적용 가능    
+- `Admob`, `AppLovin`, `Mintegral`, `Verve` 만 적용 가능
 <br/><br/><br/>
 
 ## 웹사이트 필수 등록 (Android 전용)
