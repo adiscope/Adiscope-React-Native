@@ -1,9 +1,9 @@
 # Adiscope React Native
-[![GitHub package.json version](https://img.shields.io/badge/ReactNative-4.4.0-blue)](https://github.com/adiscope/Adiscope-React-Native/releases)
-[![GitHub package.json version](https://img.shields.io/badge/Android-4.4.0-blue)](https://github.com/adiscope/Adiscope-Android-Sample)
+[![GitHub package.json version](https://img.shields.io/badge/ReactNative-4.5.0-blue)](https://github.com/adiscope/Adiscope-React-Native/releases)
+[![GitHub package.json version](https://img.shields.io/badge/Android-4.5.0-blue)](https://github.com/adiscope/Adiscope-Android-Sample)
 [![GitHub package.json version](https://img.shields.io/badge/iOS-4.4.0-blue)](https://github.com/adiscope/Adiscope-iOS-Sample)
-[![GitHub package.json version](https://img.shields.io/badge/Unity-4.4.0-blue)](https://github.com/adiscope/Adiscope-Unity-UPM)
-[![GitHub package.json version](https://img.shields.io/badge/Flutter-4.4.0-blue)](https://pub.dev/packages/adiscope_flutter_plugin)
+[![GitHub package.json version](https://img.shields.io/badge/Unity-4.5.0-blue)](https://github.com/adiscope/Adiscope-Unity-UPM)
+[![GitHub package.json version](https://img.shields.io/badge/Flutter-4.5.0-blue)](https://pub.dev/packages/adiscope_flutter_plugin)
 
 - ⚠️ **Expo 지원 불가**
 - Android Target API Level : 31+
@@ -32,12 +32,11 @@
 | Pangle              | 7.2.0.4         | 6.5.0.9     |
 | Smaato              | 22.7.2          | 없음         |
 | Unity Ads           | 4.15.0          | 4.14.0      |
-| Verve               | 3.6.0           | 없음         |
 | Yandex              | 7.13.0          | 없음         |
 
 > 기존 gms SDK 사용중인 퍼블리셔는 admob 혹은 max 어댑터 사용 시 24버전으로 마이그레이션 필요 [(관련 문서)](https://developers.google.com/admob/android/migration?hl=en)
-> - gms 22 버전: 애디스콥 `3.3.0`~`4.1.0`
-> - gms 23 버전: 애디스콥 `4.1.0`~`4.3.2`
+> - gms 22 버전: 애디스콥 `3.3.0`~`3.10.6`
+> - gms 23 버전: 애디스콥 `4.1.0`~`4.3.1`
 > - gms 24 버전: 애디스콥 `4.4.0` 이상
 
 </div>
@@ -80,7 +79,7 @@ npm install @adiscope.ad/adiscope-react-native
 
 #### B. Specific version Installation
 ```ruby
-npm install @adiscope.ad/adiscope-react-native@4.4.0
+npm install @adiscope.ad/adiscope-react-native@4.5.0
 ```
 - 프로젝트의 IDE루트 경로에서 터미널을 열고 위과 같이 특정 버전을 추가로 실행하여 설치
 <br/><br/><br/>

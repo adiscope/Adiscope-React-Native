@@ -79,10 +79,10 @@ dependencies {
   implementation "com.facebook.react:react-native:+"
 
   // [required] adiscope core library
-  implementation 'com.nps.adiscope:adiscopeCore:4.4.0'
+  implementation 'com.nps.adiscope:adiscopeCore:4.5.0'
   implementation 'com.nps.adiscope:adiscopeAndroid:1.2.2'
   implementation 'com.nps.adiscope:adapter.admob:24.4.0.0'            // admob
-  implementation 'com.nps.adiscope:adapter.max:13.3.1.0'              // max
+  implementation 'com.nps.adiscope:adapter.max:13.3.1.1'              // max
   implementation 'com.nps.adiscope:adapter.chartboost:9.8.3.0'        // chartboost
   implementation 'com.nps.adiscope:adapter.pangle:7.2.0.4.0'          // pangle
   implementation 'com.nps.adiscope:adapter.vungle:7.5.0.0'            // vungle
@@ -100,7 +100,6 @@ rootProject.allprojects {
   repositories {
     maven { url 'https://repository.adiscope.com/repository/adiscope/' }
     maven { url "https://s3.amazonaws.com/smaato-sdk-releases/" } // max 연동 시 추가
-    maven { url "https://verve.jfrog.io/artifactory/verve-gradle-release" } // max 연동 시 추가
     maven { url "https://artifactory.bidmachine.io/bidmachine" } // max 연동 시 추가
     maven { url "https://maven.ogury.co" } // max 연동 시 추가
     maven { url "https://dl-maven-android.mintegral.com/repository/mbridge_android_sdk_oversea" } // max 연동 시 추가
