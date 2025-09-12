@@ -1,9 +1,9 @@
 # Adiscope React Native
-[![GitHub package.json version](https://img.shields.io/badge/ReactNative-4.5.2-blue)](https://github.com/adiscope/Adiscope-React-Native/releases)
-[![GitHub package.json version](https://img.shields.io/badge/Android-4.5.2-blue)](https://github.com/adiscope/Adiscope-Android-Sample)
+[![GitHub package.json version](https://img.shields.io/badge/ReactNative-4.5.3-blue)](https://github.com/adiscope/Adiscope-React-Native/releases)
+[![GitHub package.json version](https://img.shields.io/badge/Android-4.5.3-blue)](https://github.com/adiscope/Adiscope-Android-Sample)
 [![GitHub package.json version](https://img.shields.io/badge/iOS-4.4.0-blue)](https://github.com/adiscope/Adiscope-iOS-Sample)
-[![GitHub package.json version](https://img.shields.io/badge/Unity-4.5.2-blue)](https://github.com/adiscope/Adiscope-Unity-UPM)
-[![GitHub package.json version](https://img.shields.io/badge/Flutter-4.5.2-blue)](https://pub.dev/packages/adiscope_flutter_plugin)
+[![GitHub package.json version](https://img.shields.io/badge/Unity-4.5.3-blue)](https://github.com/adiscope/Adiscope-Unity-UPM)
+[![GitHub package.json version](https://img.shields.io/badge/Flutter-4.5.3-blue)](https://pub.dev/packages/adiscope_flutter_plugin)
 
 - ⚠️ **Expo 지원 불가**
 - Android Target API Level : 31+
@@ -32,7 +32,6 @@
 | Pangle              | 7.2.0.4         | 6.5.0.9     |
 | Smaato              | 22.7.2          | 없음         |
 | Unity Ads           | 4.15.0          | 4.14.0      |
-| Yandex              | 7.13.0          | 없음         |
 
 > 기존 gms SDK 사용중인 퍼블리셔는 admob 혹은 max 어댑터 사용 시 24버전으로 마이그레이션 필요 [(관련 문서)](https://developers.google.com/admob/android/migration?hl=en)
 > - gms 22 버전: 애디스콥 `3.3.0`~`3.10.6`
@@ -79,7 +78,7 @@ npm install @adiscope.ad/adiscope-react-native
 
 #### B. Specific version Installation
 ```ruby
-npm install @adiscope.ad/adiscope-react-native@4.5.2
+npm install @adiscope.ad/adiscope-react-native@4.5.3
 ```
 - 프로젝트의 IDE루트 경로에서 터미널을 열고 위과 같이 특정 버전을 추가로 실행하여 설치    
 <br/><br/><br/>
@@ -343,7 +342,7 @@ useEffect(() => {
 }, [closedOfferwall4Adiscope]);
 useEffect(() => {
   if (failedToShowOfferwall4Adiscope) {
-    console.log(failedToShowOfferwall4Adiscope['unitId'] + ", " + failedToShowOfferwall4Adiscope['errorDescription'] + ", " + failedToShowOfferwall4Adiscope['errorXB3TraceID']);
+    console.log(failedToShowOfferwall4Adiscope['unitId'] + ", " + failedToShowOfferwall4Adiscope['errorCode'] + ", " + failedToShowOfferwall4Adiscope['errorDescription'] + ", " + failedToShowOfferwall4Adiscope['errorXB3TraceID']);
   }
 }, [failedToShowOfferwall4Adiscope]);
 ```
@@ -444,7 +443,7 @@ useEffect(() => {
 }, [loadedRewardedVideo4Adiscope]);
 useEffect(() => {
   if (failedToLoadRewardedVideo4Adiscope) {
-    console.log(failedToLoadRewardedVideo4Adiscope['unitId'] + ", " + failedToLoadRewardedVideo4Adiscope['errorDescription'] + ", " + failedToLoadRewardedVideo4Adiscope['errorXB3TraceID']);
+    console.log(failedToLoadRewardedVideo4Adiscope['unitId'] + ", " + failedToLoadRewardedVideo4Adiscope['errorCode'] + ", " + failedToLoadRewardedVideo4Adiscope['errorDescription'] + ", " + failedToLoadRewardedVideo4Adiscope['errorXB3TraceID']);
   }
 }, [failedToLoadRewardedVideo4Adiscope]);
 useEffect(() => {
@@ -459,7 +458,7 @@ useEffect(() => {
 }, [closedRewardedVideo4Adiscope]);
 useEffect(() => {
   if (failedToShowRewardedVideo4Adiscope) {
-    console.log(failedToShowRewardedVideo4Adiscope['unitId'] + ", " + failedToShowRewardedVideo4Adiscope['errorDescription'] + ", " + failedToShowRewardedVideo4Adiscope['errorXB3TraceID']);
+    console.log(failedToShowRewardedVideo4Adiscope['unitId'] + ", " + failedToShowRewardedVideo4Adiscope['errorCode'] + ", " + failedToShowRewardedVideo4Adiscope['errorDescription'] + ", " + failedToShowRewardedVideo4Adiscope['errorXB3TraceID']);
   }
 }, [failedToShowRewardedVideo4Adiscope]);
 ```
@@ -538,7 +537,7 @@ useEffect(() => {
 }, [loadedInterstitial4Adiscope]);
 useEffect(() => {
   if (failedToLoadInterstitial4Adiscope) {
-    console.log(failedToLoadInterstitial4Adiscope['unitId'] + ", " + failedToLoadInterstitial4Adiscope['errorDescription'] + ", " + failedToLoadInterstitial4Adiscope['errorXB3TraceID']);
+    console.log(failedToLoadInterstitial4Adiscope['unitId'] + ", " + failedToLoadInterstitial4Adiscope['errorCode'] + ", " + failedToLoadInterstitial4Adiscope['errorDescription'] + ", " + failedToLoadInterstitial4Adiscope['errorXB3TraceID']);
   }
 }, [failedToLoadInterstitial4Adiscope]);
 useEffect(() => {
@@ -553,7 +552,7 @@ useEffect(() => {
 }, [closedInterstitial4Adiscope]);
 useEffect(() => {
   if (failedToShowInterstitial4Adiscope) {
-    console.log(failedToShowInterstitial4Adiscope['unitId'] + ", " + failedToShowInterstitial4Adiscope['errorDescription'] + ", " + failedToShowInterstitial4Adiscope['errorXB3TraceID']);
+    console.log(failedToShowInterstitial4Adiscope['unitId'] + ", " + failedToShowInterstitial4Adiscope['errorCode'] + ", " + failedToShowInterstitial4Adiscope['errorDescription'] + ", " + failedToShowInterstitial4Adiscope['errorXB3TraceID']);
   }
 }, [failedToShowInterstitial4Adiscope]);
 ```
@@ -641,7 +640,7 @@ useEffect(() => {
 }, [closedRewardedInterstitial4Adiscope]);
 useEffect(() => {
   if (failedToShowRewardedInterstitial4Adiscope) {
-    console.log(failedToShowRewardedInterstitial4Adiscope['unitId'] + ", " + failedToShowRewardedInterstitial4Adiscope['errorDescription'] + ", " + failedToShowRewardedInterstitial4Adiscope['errorXB3TraceID']);
+    console.log(failedToShowRewardedInterstitial4Adiscope['unitId'] + ", " + failedToShowRewardedInterstitial4Adiscope['errorCode'] + ", " + failedToShowRewardedInterstitial4Adiscope['errorDescription'] + ", " + failedToShowRewardedInterstitial4Adiscope['errorXB3TraceID']);
   }
 }, [failedToShowRewardedInterstitial4Adiscope]);
 ```
@@ -681,7 +680,7 @@ useEffect(() => {
 }, [closedAdEvent4Adiscope]);
 useEffect(() => {
   if (failedToShowAdEvent4Adiscope) {
-    console.log(failedToShowAdEvent4Adiscope['unitId'] + ", " + failedToShowAdEvent4Adiscope['errorDescription'] + ", " + failedToShowAdEvent4Adiscope['errorXB3TraceID']);
+    console.log(failedToShowAdEvent4Adiscope['unitId'] + ", " + failedToShowAdEvent4Adiscope['errorCode'] + ", " + failedToShowAdEvent4Adiscope['errorDescription'] + ", " + failedToShowAdEvent4Adiscope['errorXB3TraceID']);
   }
 }, [failedToShowAdEvent4Adiscope]);
 ```

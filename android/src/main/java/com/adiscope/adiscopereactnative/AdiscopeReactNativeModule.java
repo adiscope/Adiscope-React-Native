@@ -244,9 +244,9 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
     Activity currentActivity = getCurrentActivity();
     if (currentActivity != null && mOfferwallAd == null) {
       mOfferwallAd = AdiscopeSdk.getOfferwallAdInstance(currentActivity);
-      if (mOfferwallAd != null) mOfferwallAd.setOfferwallAdListener(mOfferwallAdListener());
     }
     if (currentActivity != null && mOfferwallAd != null) {
+      mOfferwallAd.setOfferwallAdListener(mOfferwallAdListener());
       List<String> list = new ArrayList<>();
       if (excludeAdTypeList != null) {
         for (int i = 0; i < excludeAdTypeList.size(); i++) {
@@ -269,9 +269,9 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
     Activity currentActivity = getCurrentActivity();
     if (currentActivity != null && mOfferwallAd == null) {
       mOfferwallAd = AdiscopeSdk.getOfferwallAdInstance(currentActivity);
-      if (mOfferwallAd != null) mOfferwallAd.setOfferwallAdListener(mOfferwallAdListener());
     }
     if (currentActivity != null && mOfferwallAd != null) {
+      mOfferwallAd.setOfferwallAdListener(mOfferwallAdListener());
       List<String> list = new ArrayList<>();
       if (excludeAdTypeList != null) {
         for (int i = 0; i < excludeAdTypeList.size(); i++) {
@@ -295,9 +295,9 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
     Activity currentActivity = getCurrentActivity();
     if (currentActivity != null && mOfferwallAd == null) {
       mOfferwallAd = AdiscopeSdk.getOfferwallAdInstance(currentActivity);
-      if (mOfferwallAd != null) mOfferwallAd.setOfferwallAdListener(mOfferwallAdListener());
     }
     if (currentActivity != null && mOfferwallAd != null) {
+      mOfferwallAd.setOfferwallAdListener(mOfferwallAdListener());
       mOfferwallAd.showDetail(currentActivity, url);
       promise.resolve(true);
     } else {
@@ -336,9 +336,9 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
     Activity currentActivity = getCurrentActivity();
     if (currentActivity != null && mAdEvent == null) {
       mAdEvent = AdiscopeSdk.getAdEventInstance(currentActivity);
-      if (mAdEvent != null) mAdEvent.setAdEventListener(mAdEventListener());
     }
     if (currentActivity != null && mAdEvent != null) {
+      mAdEvent.setAdEventListener(mAdEventListener());
       mAdEvent.show(currentActivity, unitId);
       promise.resolve(true);
     } else {
@@ -402,10 +402,10 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
       Activity currentActivity = getCurrentActivity();
       if (currentActivity != null) {
         mRewardedVideoAd = AdiscopeSdk.getRewardedVideoAdInstance(currentActivity);
-        if (mRewardedVideoAd != null) mRewardedVideoAd.setRewardedVideoAdListener(mRewardedVideoAdListener());
       }
     }
     if (mRewardedVideoAd != null) {
+      mRewardedVideoAd.setRewardedVideoAdListener(mRewardedVideoAdListener());
       mRewardedVideoAd.load(unitId);
       promise.resolve(true);
     } else {
@@ -420,10 +420,10 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
       Activity currentActivity = getCurrentActivity();
       if (currentActivity != null) {
         mRewardedVideoAd = AdiscopeSdk.getRewardedVideoAdInstance(currentActivity);
-        if (mRewardedVideoAd != null) mRewardedVideoAd.setRewardedVideoAdListener(mRewardedVideoAdListener());
       }
     }
     if (mRewardedVideoAd != null) {
+      mRewardedVideoAd.setRewardedVideoAdListener(mRewardedVideoAdListener());
       boolean result = mRewardedVideoAd.isLoaded(unitId);
       promise.resolve(result);
     } else {
@@ -438,10 +438,10 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
       Activity currentActivity = getCurrentActivity();
       if (currentActivity != null) {
         mRewardedVideoAd = AdiscopeSdk.getRewardedVideoAdInstance(currentActivity);
-        if (mRewardedVideoAd != null) mRewardedVideoAd.setRewardedVideoAdListener(mRewardedVideoAdListener());
       }
     }
     if (mRewardedVideoAd != null) {
+      mRewardedVideoAd.setRewardedVideoAdListener(mRewardedVideoAdListener());
       boolean result = mRewardedVideoAd.show();
       promise.resolve(result);
     } else {
@@ -498,10 +498,10 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
       Activity currentActivity = getCurrentActivity();
       if (currentActivity != null) {
         mInterstitialAd = AdiscopeSdk.getInterstitialAdInstance(currentActivity);
-        if (mInterstitialAd != null) mInterstitialAd.setInterstitialAdListener(mInterstitialAdListener());
       }
     }
     if (mInterstitialAd != null) {
+      mInterstitialAd.setInterstitialAdListener(mInterstitialAdListener());
       mInterstitialAd.load(unitId);
       promise.resolve(true);
     } else {
@@ -516,10 +516,10 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
       Activity currentActivity = getCurrentActivity();
       if (currentActivity != null) {
         mInterstitialAd = AdiscopeSdk.getInterstitialAdInstance(currentActivity);
-        if (mInterstitialAd != null) mInterstitialAd.setInterstitialAdListener(mInterstitialAdListener());
       }
     }
     if (mInterstitialAd != null) {
+      mInterstitialAd.setInterstitialAdListener(mInterstitialAdListener());
       boolean result = mInterstitialAd.isLoaded(unitId);
       promise.resolve(result);
     } else {
@@ -534,10 +534,10 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
       Activity currentActivity = getCurrentActivity();
       if (currentActivity != null) {
         mInterstitialAd = AdiscopeSdk.getInterstitialAdInstance(currentActivity);
-        if (mInterstitialAd != null) mInterstitialAd.setInterstitialAdListener(mInterstitialAdListener());
       }
     }
     if (mInterstitialAd != null) {
+      mInterstitialAd.setInterstitialAdListener(mInterstitialAdListener());
       boolean result = mInterstitialAd.show();
       promise.resolve(result);
     } else {
@@ -592,10 +592,10 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
       Activity currentActivity = getCurrentActivity();
       if (currentActivity != null) {
         mRewardedInterstitialAd = AdiscopeSdk.getRewardedInterstitialAdInstance(currentActivity);
-        if (mRewardedInterstitialAd != null) mRewardedInterstitialAd.setRewardedInterstitialAdListener(mRewardedInterstitialAdListener());
       }
     }
     if (mRewardedInterstitialAd != null) {
+      mRewardedInterstitialAd.setRewardedInterstitialAdListener(mRewardedInterstitialAdListener());
       mRewardedInterstitialAd.getUnitStatus(unitId, new IUnitStatus() {
         @Override
         public void onResult(AdiscopeError error, UnitStatus unitStatus) {
@@ -618,10 +618,10 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
       Activity currentActivity = getCurrentActivity();
       if (currentActivity != null) {
         mRewardedInterstitialAd = AdiscopeSdk.getRewardedInterstitialAdInstance(currentActivity);
-        if (mRewardedInterstitialAd != null) mRewardedInterstitialAd.setRewardedInterstitialAdListener(mRewardedInterstitialAdListener());
       }
     }
     if (mRewardedInterstitialAd != null) {
+      mRewardedInterstitialAd.setRewardedInterstitialAdListener(mRewardedInterstitialAdListener());
       mRewardedInterstitialAd.preloadAll();
       promise.resolve(true);
     } else {
@@ -636,10 +636,10 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
       Activity currentActivity = getCurrentActivity();
       if (currentActivity != null) {
         mRewardedInterstitialAd = AdiscopeSdk.getRewardedInterstitialAdInstance(currentActivity);
-        if (mRewardedInterstitialAd != null) mRewardedInterstitialAd.setRewardedInterstitialAdListener(mRewardedInterstitialAdListener());
       }
     }
     if (mRewardedInterstitialAd != null) {
+      mRewardedInterstitialAd.setRewardedInterstitialAdListener(mRewardedInterstitialAdListener());
       List<String> list = new ArrayList<>();
       if (unitIdList != null) {
         for (int i = 0; i < unitIdList.size(); i++) {
@@ -663,10 +663,10 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
       Activity currentActivity = getCurrentActivity();
       if (currentActivity != null) {
         mRewardedInterstitialAd = AdiscopeSdk.getRewardedInterstitialAdInstance(currentActivity);
-        if (mRewardedInterstitialAd != null) mRewardedInterstitialAd.setRewardedInterstitialAdListener(mRewardedInterstitialAdListener());
       }
     }
     if (mRewardedInterstitialAd != null) {
+      mRewardedInterstitialAd.setRewardedInterstitialAdListener(mRewardedInterstitialAdListener());
       mRewardedInterstitialAd.show(unitId);
       promise.resolve(true);
     } else {

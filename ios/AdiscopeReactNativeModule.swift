@@ -164,6 +164,7 @@ class AdiscopeReactNativeModule: RCTEventEmitter {
 
     @objc(showOfferwall:excludeAdTypeList:resolver:rejecter:)
     func showOfferwall(_ unitId: String, excludeAdTypeList: Array<String>, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
+        adiscope.setMainDelegate(self)
         DispatchQueue.main.async {
             let result = self.adiscope.showOfferwall(unitId)
             resolve(result)
@@ -172,6 +173,7 @@ class AdiscopeReactNativeModule: RCTEventEmitter {
 
     @objc(showOfferwallDetail:detailId:excludeAdTypeList:resolver:rejecter:)
     func showOfferwallDetail(_ unitId: String, detailId: String, excludeAdTypeList: Array<String>, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
+        adiscope.setMainDelegate(self)
         DispatchQueue.main.async {
             let result = self.adiscope.showOfferwallDetail(unitId, offerwallItemId: detailId)
             resolve(result)
@@ -180,6 +182,7 @@ class AdiscopeReactNativeModule: RCTEventEmitter {
 
     @objc(showOfferwallDetailFromUrl:resolver:rejecter:)
     func showOfferwallDetailFromUrl(_ url: String, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
+        adiscope.setMainDelegate(self)
         DispatchQueue.main.async {
             let result = self.adiscope.showOfferwallDetail(url)
             resolve(result)
@@ -204,6 +207,7 @@ class AdiscopeReactNativeModule: RCTEventEmitter {
 
     @objc(showAdEvent:resolver:rejecter:)
     func showAdEvent(_ unitId: String, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
+        adiscope.setMainDelegate(self)
         DispatchQueue.main.async {
             let result = self.adiscope.showAdEvent(unitId)
             resolve(result)
@@ -243,6 +247,7 @@ class AdiscopeReactNativeModule: RCTEventEmitter {
 
     @objc(load:resolver:rejecter:)
     func load(_ unitId: String, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
+        adiscope.setMainDelegate(self)
         adiscope.load(unitId)
         resolve(true)
     }
@@ -255,6 +260,7 @@ class AdiscopeReactNativeModule: RCTEventEmitter {
 
     @objc(show:rejecter:)
     func show(_ resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
+        adiscope.setMainDelegate(self)
         DispatchQueue.main.async {
             let result = self.adiscope.show()
             resolve(result)
@@ -289,6 +295,7 @@ class AdiscopeReactNativeModule: RCTEventEmitter {
 
     @objc(loadInterstitial:resolver:rejecter:)
     func loadInterstitial(_ unitId: String, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
+        adiscope.setMainDelegate(self)
         adiscope.loadInterstitial(unitId)
         resolve(true)
     }
@@ -301,6 +308,7 @@ class AdiscopeReactNativeModule: RCTEventEmitter {
 
     @objc(showInterstitial:rejecter:)
     func showInterstitial(_ resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
+        adiscope.setMainDelegate(self)
         DispatchQueue.main.async {
             self.adiscope.showInterstitial()
             resolve(true)
@@ -341,6 +349,7 @@ class AdiscopeReactNativeModule: RCTEventEmitter {
 
     @objc(getUnitStatusRewardedInterstitial:resolver:rejecter:)
     func getUnitStatusRewardedInterstitial(_ unitId: String, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
+        adiscope.setMainDelegate(self)
         resolveCallback = resolve
         rejectCallback = reject
         adiscope.getRewardedInterstitialUnitStatus(unitId)
@@ -348,18 +357,21 @@ class AdiscopeReactNativeModule: RCTEventEmitter {
 
     @objc(preLoadAllRewardedInterstitial:rejecter:)
     func preLoadAllRewardedInterstitial(_ resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
+        adiscope.setMainDelegate(self)
         self.adiscope.preLoadAllRewardedInterstitial()
         resolve(true)
     }
 
     @objc(preLoadRewardedInterstitial:resolver:rejecter:)
     func preLoadRewardedInterstitial(_ unitIds: Array<String>, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
+        adiscope.setMainDelegate(self)
         adiscope.preLoadRewardedInterstitial(unitIds)
         resolve(true)
     }
 
     @objc(showRewardedInterstitial:resolver:rejecter:)
     func showRewardedInterstitial(_ unitId: String, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
+        adiscope.setMainDelegate(self)
         DispatchQueue.main.async {
             let result = self.adiscope.showRewardedInterstitial(unitId)
             resolve(result)
