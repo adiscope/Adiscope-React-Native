@@ -1,5 +1,5 @@
 # Adiscope React Native
-[![GitHub package.json version](https://img.shields.io/badge/ReactNative-5.0.0-blue)](https://github.com/adiscope/Adiscope-React-Native/releases)
+[![GitHub package.json version](https://img.shields.io/badge/ReactNative-5.0.1-blue)](https://github.com/adiscope/Adiscope-React-Native/releases)
 [![GitHub package.json version](https://img.shields.io/badge/Android-5.0.0-blue)](https://github.com/adiscope/Adiscope-Android-Sample)
 [![GitHub package.json version](https://img.shields.io/badge/iOS-5.0.0-blue)](https://github.com/adiscope/Adiscope-iOS-Sample)
 [![GitHub package.json version](https://img.shields.io/badge/Unity-5.0.0-blue)](https://github.com/adiscope/Adiscope-Unity-UPM)

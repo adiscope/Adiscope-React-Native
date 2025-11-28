@@ -1,6 +1,6 @@
 {
   "name": "@adiscope.ad/adiscope-react-native",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "React Native Module for Adiscope SDK",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
