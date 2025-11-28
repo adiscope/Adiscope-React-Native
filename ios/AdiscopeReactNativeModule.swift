@@ -146,6 +146,23 @@ class AdiscopeReactNativeModule: RCTEventEmitter {
         resolve(true)
     }
 
+    @objc(setShowWithLoad2BackgroundColor:green:blue:alpha:resolver:rejecter:)
+    func setShowWithLoad2BackgroundColor(_ red: String, green: String, blue: String, alpha: String, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
+        adiscope.setShowWithLoad2BackgroundColor(red, green: green, blue: blue, alpha: alpha)
+        resolve(true)
+    }
+
+    @objc(setShowWithLoad2IndicatorStyleMedium:isHidden:resolver:rejecter:)
+    func setShowWithLoad2IndicatorStyleMedium(_ isMedium: Bool, isHidden: Bool, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
+        adiscope.setShowWithLoad2IndicatorStyleMedium(isMedium, isHidden: isHidden)
+        resolve(true)
+    }
+
+    @objc(setShowWithLoad2ErrorAlertMsg:isHidden:resolver:rejecter:)
+    func setShowWithLoad2ErrorAlertMsg(_ msg: String, isHidden: Bool, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
+        adiscope.setShowWithLoad2ErrorAlertMsg(msg, isHidden: isHidden)
+        resolve(true)
+    }
 
     @objc
     func onOfferwallAdOpened(_ unitID: String!) {
@@ -245,6 +262,12 @@ class AdiscopeReactNativeModule: RCTEventEmitter {
         sendEvent(withName: "onRewardedVideoAdFailedToShow", body: ["unitId": unitID ?? "", "errorCode": error.code, "errorDescription": error.description, "errorXB3TraceID": error.getXB3TraceID() ?? ""])
     }
 
+    @objc(showWithLoad:resolver:rejecter:)
+    func showWithLoad(_ unitId: String, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
+        adiscope.show(withLoad: unitId, delegate:self)
+        resolve(true)
+    }
+
     @objc(load:resolver:rejecter:)
     func load(_ unitId: String, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
         adiscope.setMainDelegate(self)
@@ -291,6 +314,12 @@ class AdiscopeReactNativeModule: RCTEventEmitter {
     @objc
     func onInterstitialAdFailed(toShow unitID: String!, Error error: AdiscopeError!) {
         sendEvent(withName: "onInterstitialAdFailedToShow", body: ["unitId": unitID ?? "", "errorCode": error.code, "errorDescription": error.description, "errorXB3TraceID": error.getXB3TraceID() ?? ""])
+    }
+
+    @objc(showWithLoadInterstitial:resolver:rejecter:)
+    func showWithLoadInterstitial(_ unitId: String, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
+        adiscope.show(withLoadInterstitial: unitId, delegate:self)
+        resolve(true)
     }
 
     @objc(loadInterstitial:resolver:rejecter:)

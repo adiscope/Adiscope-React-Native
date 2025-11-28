@@ -21,6 +21,7 @@ const AdiscopeReactNativeModule = NativeModules.AdiscopeReactNativeModule
 const eventEmitter = new NativeEventEmitter(AdiscopeReactNativeModule);
 
 interface InterstitialState {
+  showWithLoadInterstitial4Adiscope: any;
   loadedInterstitial4Adiscope: any;
   failedToLoadInterstitial4Adiscope: any;
   openedInterstitial4Adiscope: any;
@@ -29,6 +30,7 @@ interface InterstitialState {
 }
 
 const initialState: InterstitialState = {
+  showWithLoadInterstitial4Adiscope: undefined,
   loadedInterstitial4Adiscope: undefined,
   failedToLoadInterstitial4Adiscope: undefined,
   openedInterstitial4Adiscope: undefined,
@@ -40,6 +42,15 @@ export default function useInterstitial4Adiscope(unitId?: string): any {
   const [stateInterstitial4Adiscope, setStateInterstitial4Adiscope] = useReducer<
     Reducer<InterstitialState, Partial<InterstitialState>>
   >((prevState, newState) => ({ ...prevState, ...newState }), initialState);
+
+  const showWithLoadInterstitial4Adiscope = useCallback(async (unitIdOverride?: string) => {
+    const effectiveUnitId = unitIdOverride || unitId;
+    return AdiscopeReactNativeModule.showWithLoadInterstitial(effectiveUnitId)
+      .then((data: any) => data)
+      .catch((error: any) => {
+        console.log(JSON.stringify(error), 'error');
+      });
+  }, [unitId]);
 
   const loadInterstitial4Adiscope = useCallback(async (unitIdOverride?: string) => {
     const effectiveUnitId = unitIdOverride || unitId;
@@ -92,6 +103,7 @@ export default function useInterstitial4Adiscope(unitId?: string): any {
   }, []);
   return {
     ...stateInterstitial4Adiscope,
+    showWithLoadInterstitial4Adiscope,
     loadInterstitial4Adiscope,
     isLoadedInterstitial4Adiscope,
     showInterstitial4Adiscope,

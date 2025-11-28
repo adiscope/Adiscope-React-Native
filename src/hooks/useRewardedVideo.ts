@@ -21,6 +21,7 @@ const AdiscopeReactNativeModule = NativeModules.AdiscopeReactNativeModule
 const eventEmitter = new NativeEventEmitter(AdiscopeReactNativeModule);
 
 interface RewardedVideoState {
+  showWithLoadRewardedVideo4Adiscope: any;
   loadedRewardedVideo4Adiscope: any;
   failedToLoadRewardedVideo4Adiscope: any;
   openedRewardedVideo4Adiscope: any;
@@ -30,6 +31,7 @@ interface RewardedVideoState {
 }
 
 const initialState: RewardedVideoState = {
+  showWithLoadRewardedVideo4Adiscope: undefined,
   loadedRewardedVideo4Adiscope: undefined,
   failedToLoadRewardedVideo4Adiscope: undefined,
   openedRewardedVideo4Adiscope: undefined,
@@ -42,6 +44,15 @@ export default function useRewardedVideo4Adiscope(unitId?: string): any {
   const [stateRewardedVideo4Adiscope, setStateRewardedVideo4Adiscope] = useReducer<
     Reducer<RewardedVideoState, Partial<RewardedVideoState>>
   >((prevState, newState) => ({ ...prevState, ...newState }), initialState);
+
+  const showWithLoadRewardedVideo4Adiscope = useCallback(async (unitIdOverride?: string) => {
+    const effectiveUnitId = unitIdOverride || unitId;
+    return AdiscopeReactNativeModule.showWithLoad(effectiveUnitId)
+      .then((data: any) => data)
+      .catch((error: any) => {
+        console.log(JSON.stringify(error), 'error');
+      });
+  }, [unitId]);
 
   const loadRewardedVideo4Adiscope = useCallback(async (unitIdOverride?: string) => {
     const effectiveUnitId = unitIdOverride || unitId;
@@ -97,6 +108,7 @@ export default function useRewardedVideo4Adiscope(unitId?: string): any {
   }, []);
   return {
     ...stateRewardedVideo4Adiscope,
+    showWithLoadRewardedVideo4Adiscope,
     loadRewardedVideo4Adiscope,
     isLoadedRewardedVideo4Adiscope,
     showRewardedVideo4Adiscope,

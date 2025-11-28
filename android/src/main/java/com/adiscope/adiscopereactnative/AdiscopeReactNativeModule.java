@@ -212,6 +212,24 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
     }
   }
 
+  @ReactMethod
+  public void setShowWithLoad2BackgroundColor(String red, String green, String blue, String alpha, Promise promise) {
+    promise.resolve(false);
+    promise.reject("exception", "No interface");
+  }
+
+  @ReactMethod
+  public void setShowWithLoad2IndicatorStyleMedium(boolean isMedium, boolean isHidden, Promise promise) {
+    promise.resolve(false);
+    promise.reject("exception", "No interface");
+  }
+
+  @ReactMethod
+  public void setShowWithLoad2ErrorAlertMsg(String msg, boolean isHidden, Promise promise) {
+    promise.resolve(false);
+    promise.reject("exception", "No interface");
+  }
+
 
   public OfferwallAdListener mOfferwallAdListener() {
     return new OfferwallAdListener() {
@@ -397,6 +415,12 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
+  public void showWithLoad(String unitId, Promise promise) {
+    promise.resolve(false);
+    promise.reject("exception", "No interface");
+  }
+
+  @ReactMethod
   public void load(String unitId, Promise promise) {
     if (mRewardedVideoAd == null) {
       Activity currentActivity = getCurrentActivity();
@@ -490,6 +514,12 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
         sendEvent("onInterstitialAdFailedToShow", payload);
       }
     };
+  }
+
+  @ReactMethod
+  public void showWithLoadInterstitial(String unitId, Promise promise) {
+    promise.resolve(false);
+    promise.reject("exception", "No interface");
   }
 
   @ReactMethod

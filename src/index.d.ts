@@ -8,6 +8,9 @@ export declare const getUnitStatus4Adiscope: (unitId: string) => Promise<boolean
 export declare const showMaxMediationDebugger4Adiscope: () => Promise<boolean>;
 export declare const showAdmobMediationDebugger4Adiscope: () => Promise<boolean>;
 export declare const setVolumeOff4Adiscope: (isOn: boolean) => Promise<boolean>;
+export declare const setShowWithLoad2BackgroundColor4Adiscope: (red: string, green: string, blue: string, alpha: string) => Promise<boolean>;
+export declare const setShowWithLoad2IndicatorStyleMedium4Adiscope: (isMedium: boolean, isHidden: boolean) => Promise<boolean>;
+export declare const setShowWithLoad2ErrorAlertMsg4Adiscope: (msg: string, isHidden: boolean) => Promise<boolean>;
 export declare const useOfferwall4Adiscope: (unitId?: string, detailId?: string, detailUrl?: string, excludeAdTypeList?: string[]) => {
   showOfferwall4Adiscope: (unitId: string, excludeAdTypeList: string[]) => Promise<boolean>;
   showOfferwallDetail4Adiscope: (unitId: string, detailId: string, excludeAdTypeList: string[]) => Promise<boolean>;
@@ -23,6 +26,7 @@ export declare const useAdEvent4Adiscope: (unitId?: string) => {
   failedToShowAdEvent4Adiscope: any;
 };
 export declare const useRewardedVideo4Adiscope: (unitId?: string) => {
+  showWithLoadRewardedVideo4Adiscope: (unitId: string) => Promise<boolean>;
   loadRewardedVideo4Adiscope: (unitId: string) => Promise<boolean>;
   isLoadedRewardedVideo4Adiscope: (unitId: string) => Promise<boolean>;
   showRewardedVideo4Adiscope: () => Promise<boolean>;
@@ -34,6 +38,7 @@ export declare const useRewardedVideo4Adiscope: (unitId?: string) => {
   failedToShowRewardedVideo4Adiscope: any;
 };
 export declare const useInterstitial4Adiscope: (unitId?: string) => {
+  showWithLoadInterstitial4Adiscope: (unitId: string) => Promise<boolean>;
   loadInterstitial4Adiscope: (unitId: string) => Promise<boolean>;
   isLoadedInterstitial4Adiscope: (unitId: string) => Promise<boolean>;
   showInterstitial4Adiscope: () => Promise<boolean>;

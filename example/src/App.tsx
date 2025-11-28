@@ -7,7 +7,8 @@ import { useOfferwall4Adiscope, useAdEvent4Adiscope, useRewardedVideo4Adiscope, 
   useRewardedInterstitial4Adiscope } from '@adiscope.ad/adiscope-react-native';
 // Other
 import { getSDKVersion4Adiscope, getNetworksVersions4Adiscope, getUnitStatus4Adiscope, setVolumeOff4Adiscope, 
-  showAdmobMediationDebugger4Adiscope, showMaxMediationDebugger4Adiscope } from '@adiscope.ad/adiscope-react-native';
+  showAdmobMediationDebugger4Adiscope, showMaxMediationDebugger4Adiscope, setShowWithLoad2BackgroundColor4Adiscope,
+  setShowWithLoad2IndicatorStyleMedium4Adiscope, setShowWithLoad2ErrorAlertMsg4Adiscope } from '@adiscope.ad/adiscope-react-native';
 
 export default function App() {
 
@@ -37,6 +38,11 @@ export default function App() {
   const riUnitId3: string = Platform.OS === 'android' ? '' : '';
   const riUnitId4: string = Platform.OS === 'android' ? '' : '';
   const riUnitId5: string = Platform.OS === 'android' ? '' : '';
+  const bgColorRed: string = '0';
+  const bgColorGreen: string = '0';
+  const bgColorBlue: string = '0';
+  const bgColorAlpha: string = '0.3';
+  const alertMsg: string = '';
 
   // Start Set User Id
   const [strUserId, setStrUserId] = useState(userId);
@@ -160,6 +166,66 @@ export default function App() {
     setLogText('Ad Sound Off => ' + result);
   }
 
+  const [strBgColorRed, setStrBgColorRed] = useState(bgColorRed);
+  const bgColorRedTextChange = (newText: string) => {
+    setStrBgColorRed(newText);
+  };
+  const [strBgColorGreen, setStrBgColorGreen] = useState(bgColorGreen);
+  const bgColorGreenTextChange = (newText: string) => {
+    setStrBgColorGreen(newText);
+  };
+  const [strBgColorBlue, setStrBgColorBlue] = useState(bgColorBlue);
+  const bgColorBlueTextChange = (newText: string) => {
+    setStrBgColorBlue(newText);
+  };
+  const [strBgColorAlpha, setStrBgColorAlpha] = useState(bgColorAlpha);
+  const bgColorAlphaTextChange = (newText: string) => {
+    setStrBgColorAlpha(newText);
+  };
+
+  const btnSetShowWithLoad2BackgroundColor = async () => {
+    const result = await setShowWithLoad2BackgroundColor4Adiscope(strBgColorRed, strBgColorGreen, strBgColorBlue, strBgColorAlpha);
+    setLogText('Show With Load Background Color => ' + result);
+  }
+
+  const [isStyleMedium, setIsStyleMedium] = useState(false);
+  const [isStyleHidden, setIsStyleHidden] = useState(false);
+
+  const btnSetShowWithLoad2IndicatorStyleMedium = async () => {
+    const newValue = !isStyleMedium;
+    setIsStyleMedium(newValue);
+
+    const result = await setShowWithLoad2IndicatorStyleMedium4Adiscope(newValue, isStyleHidden);
+    setLogText('Show With Load Indicator Style Medium => ' + result);
+  }
+
+  const btnSetShowWithLoad2IndicatorisStyleHidden = async () => {
+    const newValue = !isStyleHidden;
+    setIsStyleHidden(newValue);
+
+    const result = await setShowWithLoad2IndicatorStyleMedium4Adiscope(isStyleMedium, newValue);
+    setLogText('Show With Load Indicatoris Style Hidden => ' + result);
+  }
+
+  const [strAlertMsg, setStrAlertMsg] = useState(alertMsg);
+  const alertMsgTextChange = (newText: string) => {
+    setStrAlertMsg(newText);
+  };
+  const [isAlertHidden, setIsAlertHidden] = useState(false);
+
+  const btnSetShowWithLoad2ErrorAlertMsg = async () => {
+    const result = await setShowWithLoad2ErrorAlertMsg4Adiscope(strAlertMsg, isAlertHidden);
+    setLogText('Show With Load Error Alert Msg => ' + result);
+  }
+
+  const btnSetShowWithLoad2ErrorAlertHidden = async () => {
+    const newValue = !isAlertHidden;
+    setIsAlertHidden(newValue);
+
+    const result = await setShowWithLoad2ErrorAlertMsg4Adiscope(strAlertMsg, newValue);
+    setLogText('Show With Load Error Alert Hidden=> ' + result);
+  }
+
   // Start Offerwall
   const { showOfferwall4Adiscope, showOfferwallDetail4Adiscope, showOfferwallDetailFromUrl4Adiscope, 
     openedOfferwall4Adiscope, closedOfferwall4Adiscope, failedToShowOfferwall4Adiscope } = useOfferwall4Adiscope();
@@ -202,15 +268,19 @@ export default function App() {
   // End AdEvent
 
   // Start RewardedVideo
-  const { loadRewardedVideo4Adiscope, isLoadedRewardedVideo4Adiscope, showRewardedVideo4Adiscope,
-    loadedRewardedVideo4Adiscope, failedToLoadRewardedVideo4Adiscope, openedRewardedVideo4Adiscope,
-    closedRewardedVideo4Adiscope, rewardedRewardedVideo4Adiscope,
+  const { showWithLoadRewardedVideo4Adiscope, loadRewardedVideo4Adiscope, isLoadedRewardedVideo4Adiscope, 
+    showRewardedVideo4Adiscope, loadedRewardedVideo4Adiscope, failedToLoadRewardedVideo4Adiscope, 
+    openedRewardedVideo4Adiscope, closedRewardedVideo4Adiscope, rewardedRewardedVideo4Adiscope,
     failedToShowRewardedVideo4Adiscope } = useRewardedVideo4Adiscope();
 
   const [strRewardedVideoUnitId, setStrRewardedVideoUnitId] = useState(rvUnitId);
   const rewardedVideoUnitIdTextChange = (newText: string) => {
     setStrRewardedVideoUnitId(newText);
   };
+  const btnShowWithLoadRewardedVideo = async () => {
+    const result = await showWithLoadRewardedVideo4Adiscope(strRewardedVideoUnitId);
+    setLogText('Click RewardedVideo ShowWithLoad => ' + result);
+  }
   const btnLoadRewardedVideo = async () => {
     const result = await loadRewardedVideo4Adiscope(strRewardedVideoUnitId);
     setLogText('Click RewardedVideo Load => ' + result);
@@ -226,14 +296,18 @@ export default function App() {
   // End RewardedVideo
 
   // Start Interstitial
-  const { loadInterstitial4Adiscope, isLoadedInterstitial4Adiscope, showInterstitial4Adiscope,
-    loadedInterstitial4Adiscope, failedToLoadInterstitial4Adiscope, openedInterstitial4Adiscope,
-    closedInterstitial4Adiscope, failedToShowInterstitial4Adiscope } = useInterstitial4Adiscope();
+  const { showWithLoadInterstitial4Adiscope, loadInterstitial4Adiscope, isLoadedInterstitial4Adiscope, 
+    showInterstitial4Adiscope, loadedInterstitial4Adiscope, failedToLoadInterstitial4Adiscope, 
+    openedInterstitial4Adiscope, closedInterstitial4Adiscope, failedToShowInterstitial4Adiscope } = useInterstitial4Adiscope();
 
   const [strInterstitialUnitId, setStrInterstitialUnitId] = useState(itUnitId);
   const interstitialUnitIdTextChange = (newText: string) => {
     setStrInterstitialUnitId(newText);
   };
+  const btnShowWithLoadInterstitial = async () => {
+    const result = await showWithLoadInterstitial4Adiscope(strInterstitialUnitId);
+    setLogText('Click Interstitial ShowWithLoad => ' + result);
+  }
   const btnLoadInterstitial = async () => {
     const result = await loadInterstitial4Adiscope(strInterstitialUnitId);
     setLogText('Click Interstitial Load => ' + result);
@@ -583,6 +657,9 @@ export default function App() {
             <Text style={styles.button_name}>Show</Text>
           </TouchableOpacity>
         </View>
+        <TouchableOpacity style={styles.button} onPress={btnShowWithLoadRewardedVideo}>
+          <Text style={styles.button_name}>Show With Load</Text>
+        </TouchableOpacity>
 
         <Text style={styles.subTitle}>Interstitial</Text>
         <View style={styles.textInputContainer}>
@@ -600,6 +677,9 @@ export default function App() {
             <Text style={styles.button_name}>Show</Text>
           </TouchableOpacity>
         </View>
+        <TouchableOpacity style={styles.button} onPress={btnShowWithLoadInterstitial}>
+          <Text style={styles.button_name}>Show With Load</Text>
+        </TouchableOpacity>
 
         <Text style={styles.subTitle}>RewardedInterstitial</Text>
         <View style={styles.textInputContainer}>
@@ -642,6 +722,43 @@ export default function App() {
             <Text style={styles.button_name}>GetUnitStatus</Text>
           </TouchableOpacity>
         </View>
+
+        <Text style={styles.subTitle}>Show With Load</Text>
+        <View style={styles.textInputContainer}>
+          <Text style={styles.textInputTitle}>Red</Text>
+          <TextInput style={styles.textInput} value={strBgColorRed} onChangeText={bgColorRedTextChange} />
+        </View>
+        <View style={styles.textInputContainer}>
+          <Text style={styles.textInputTitle}>Red</Text>
+          <TextInput style={styles.textInput} value={strBgColorGreen} onChangeText={bgColorGreenTextChange} />
+        </View>
+        <View style={styles.textInputContainer}>
+          <Text style={styles.textInputTitle}>Red</Text>
+          <TextInput style={styles.textInput} value={strBgColorBlue} onChangeText={bgColorBlueTextChange} />
+        </View>
+        <View style={styles.textInputContainer}>
+          <Text style={styles.textInputTitle}>Red</Text>
+          <TextInput style={styles.textInput} value={strBgColorAlpha} onChangeText={bgColorAlphaTextChange} />
+        </View>
+        <TouchableOpacity style={styles.button} onPress={btnSetShowWithLoad2BackgroundColor}>
+          <Text style={styles.button_name}>Set Color</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={btnSetShowWithLoad2IndicatorStyleMedium}>
+          <Text style={styles.button_name}>Set Indicator Style</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={btnSetShowWithLoad2IndicatorisStyleHidden}>
+          <Text style={styles.button_name}>Set Indicator Hidden</Text>
+        </TouchableOpacity>
+        <View style={styles.textInputContainer}>
+          <Text style={styles.textInputTitle}>Set Alert Msg</Text>
+          <TextInput style={styles.textInput} value={strAlertMsg} onChangeText={alertMsgTextChange} />
+        </View>
+        <TouchableOpacity style={styles.button} onPress={btnSetShowWithLoad2ErrorAlertMsg}>
+          <Text style={styles.button_name}>Set Error Alert Msg</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={btnSetShowWithLoad2ErrorAlertHidden}>
+          <Text style={styles.button_name}>Set Error Alert Hidden</Text>
+        </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
   );

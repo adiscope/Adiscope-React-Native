@@ -1,9 +1,9 @@
 # Adiscope React Native
-[![GitHub package.json version](https://img.shields.io/badge/ReactNative-4.5.3-blue)](https://github.com/adiscope/Adiscope-React-Native/releases)
-[![GitHub package.json version](https://img.shields.io/badge/Android-4.5.3-blue)](https://github.com/adiscope/Adiscope-Android-Sample)
-[![GitHub package.json version](https://img.shields.io/badge/iOS-4.4.0-blue)](https://github.com/adiscope/Adiscope-iOS-Sample)
-[![GitHub package.json version](https://img.shields.io/badge/Unity-4.5.3-blue)](https://github.com/adiscope/Adiscope-Unity-UPM)
-[![GitHub package.json version](https://img.shields.io/badge/Flutter-4.5.3-blue)](https://pub.dev/packages/adiscope_flutter_plugin)
+[![GitHub package.json version](https://img.shields.io/badge/ReactNative-5.0.0-blue)](https://github.com/adiscope/Adiscope-React-Native/releases)
+[![GitHub package.json version](https://img.shields.io/badge/Android-5.0.0-blue)](https://github.com/adiscope/Adiscope-Android-Sample)
+[![GitHub package.json version](https://img.shields.io/badge/iOS-5.0.0-blue)](https://github.com/adiscope/Adiscope-iOS-Sample)
+[![GitHub package.json version](https://img.shields.io/badge/Unity-5.0.0-blue)](https://github.com/adiscope/Adiscope-Unity-UPM)
+[![GitHub package.json version](https://img.shields.io/badge/Flutter-5.0.0-blue)](https://pub.dev/packages/adiscope_flutter_plugin)
 
 - ⚠️ **Expo 지원 불가**
 - Android Target API Level : 31+
@@ -16,22 +16,25 @@
 
 | Ad Network          | Android Version | iOS Version |
 |---------------------|-----------------|-------------|
-| AdMob               | 24.4.0          | 12.2.0      |
-| Amazon              | 11.0.1          | 5.1.0       |
-| AppLovin            | 13.3.1          | 13.1.0      |
-| BidMachine          | 3.3.0           | 3.2.1       |
-| Chartboost          | 9.8.3           | 9.8.1       |
-| DT Exchange         | 8.3.7           | 8.3.5       |
-| InMobi              | 10.8.3          | 10.8.2      |
-| Ironsource          | 8.9.1           | 8.8.0.0     |
-| Liftoff(Vungle)     | 7.5.0           | 7.4.4       |
-| Meta(Fan)           | 6.20.0          | 6.17.1      |
-| Mintegral(Mobvista) | 16.9.71         | 7.7.7       |
-| Moloco              | 3.10.0          | 3.7.2       |
-| Ogury               | 6.0.1           | 5.0.2       |
-| Pangle              | 7.2.0.4         | 6.5.0.9     |
+| AdMob               | 24.4.0          | 12.11.0     |
+| Amazon              | 11.0.1          | 5.3.1       |
+| AppLovin            | 13.3.1          | 13.4.0      |
+| BidMachine          | 3.3.0           | 3.4.0       |
+| Bigo                | 5.5.1           | 없음         |
+| Chartboost          | 9.8.3           | 9.9.2       |
+| DT Exchange         | 8.3.7           | 8.3.8       |
+| InMobi              | 10.8.3          | 10.8.6      |
+| Ironsource          | 8.9.1           | 8.10.0.0    |
+| Liftoff(Vungle)     | 7.5.0           | 7.5.2       |
+| Line                | 2.9.20250110    | 없음         |
+| Meta(Fan)           | 6.20.0          | 6.20.1      |
+| Mintegral(Mobvista) | 16.9.71         | 7.7.9       |
+| Moloco              | 3.10.0          | 3.12.1      |
+| Ogury               | 6.0.1           | 5.1.1       |
+| Pangle              | 7.7.0.2         | 7.4.1.1     |
+| Pubmatic            | 4.9.1           | 없음         |
 | Smaato              | 22.7.2          | 없음         |
-| Unity Ads           | 4.15.0          | 4.14.0      |
+| Unity Ads           | 4.15.0          | 4.16.1      |
 
 > 기존 gms SDK 사용중인 퍼블리셔는 admob 혹은 max 어댑터 사용 시 24버전으로 마이그레이션 필요 [(관련 문서)](https://developers.google.com/admob/android/migration?hl=en)
 > - gms 22 버전: 애디스콥 `3.3.0`~`3.10.6`
@@ -55,8 +58,7 @@
 - [RewardedVideo](#5-rewardedvideo)
 - [Interstitial](#6-interstitial)
 - [RewardedInterstitial](#7-rewardedinterstitial)
-- [AdEvent](#8-adevent)
-- [Etc](#9-etc)
+- [Etc](#8-etc)
 #### [웹사이트 필수 등록](#웹사이트-필수-등록-android-전용)
 #### [Adiscope Server 연동하기](./docs/reward_callback_info.md)
 #### [Privacy Manifest 정책 적용](#privacy-manifest-정책-적용-ios-전용)
@@ -78,7 +80,7 @@ npm install @adiscope.ad/adiscope-react-native
 
 #### B. Specific version Installation
 ```ruby
-npm install @adiscope.ad/adiscope-react-native@4.5.3
+npm install @adiscope.ad/adiscope-react-native@5.0.0
 ```
 - 프로젝트의 IDE루트 경로에서 터미널을 열고 위과 같이 특정 버전을 추가로 실행하여 설치    
 <br/><br/><br/>
@@ -123,28 +125,27 @@ android {
 target 'AdiscopeReactNativeExample' do
   config = use_native_modules!
 
-  pod 'AdiscopeAdEvent', '4.3.0'
-  pod 'AdiscopeMediaAdManager', '4.3.0'
-  pod 'AdiscopeMediaAdMob', '4.3.0'
-  pod 'AdiscopeMediaChartBoost', '4.3.0'
-  pod 'AdiscopeMediaPangle', '4.3.0'
-  pod 'AdiscopeMediaVungle', '4.3.0'
-  pod 'AdiscopeMediaMax', '4.3.0'
-  pod 'AdiscopeMediaMaxAdapterAdManager', '4.3.0'
-  pod 'AdiscopeMediaMaxAdapterAdMob', '4.3.0'
-  pod 'AdiscopeMediaMaxAdapterAmazon', '4.3.0'
-  pod 'AdiscopeMediaMaxAdapterBidMachine', '4.3.0'
-  pod 'AdiscopeMediaMaxAdapterChartBoost', '4.3.0'
-  pod 'AdiscopeMediaMaxAdapterDTExchange', '4.3.0'
-  pod 'AdiscopeMediaMaxAdapterFan', '4.3.0'
-  pod 'AdiscopeMediaMaxAdapterInMobi', '4.3.0'
-  pod 'AdiscopeMediaMaxAdapterIronSource', '4.3.0'
-  pod 'AdiscopeMediaMaxAdapterMobVista', '4.3.0'
-  pod 'AdiscopeMediaMaxAdapterMoloco', '4.3.0'
-  pod 'AdiscopeMediaMaxAdapterOgury', '4.3.0'
-  pod 'AdiscopeMediaMaxAdapterPangle', '4.3.0'
-  pod 'AdiscopeMediaMaxAdapterUnityAds', '4.3.0'
-  pod 'AdiscopeMediaMaxAdapterVungle', '4.3.0'
+  pod 'AdiscopeMediaAdManager', '5.0.0'
+  pod 'AdiscopeMediaAdMob', '5.0.0'
+  pod 'AdiscopeMediaChartBoost', '5.0.0'
+  pod 'AdiscopeMediaPangle', '5.0.0'
+  pod 'AdiscopeMediaVungle', '5.0.0'
+  pod 'AdiscopeMediaMax', '5.0.0'
+  pod 'AdiscopeMediaMaxAdapterAdManager', '5.0.0'
+  pod 'AdiscopeMediaMaxAdapterAdMob', '5.0.0'
+  pod 'AdiscopeMediaMaxAdapterAmazon', '5.0.0'
+  pod 'AdiscopeMediaMaxAdapterBidMachine', '5.0.0'
+  pod 'AdiscopeMediaMaxAdapterChartBoost', '5.0.0'
+  pod 'AdiscopeMediaMaxAdapterDTExchange', '5.0.0'
+  pod 'AdiscopeMediaMaxAdapterFan', '5.0.0'
+  pod 'AdiscopeMediaMaxAdapterInMobi', '5.0.0'
+  pod 'AdiscopeMediaMaxAdapterIronSource', '5.0.0'
+  pod 'AdiscopeMediaMaxAdapterMobVista', '5.0.0'
+  pod 'AdiscopeMediaMaxAdapterMoloco', '5.0.0'
+  pod 'AdiscopeMediaMaxAdapterOgury', '5.0.0'
+  pod 'AdiscopeMediaMaxAdapterPangle', '5.0.0'
+  pod 'AdiscopeMediaMaxAdapterUnityAds', '5.0.0'
+  pod 'AdiscopeMediaMaxAdapterVungle', '5.0.0'
 
   use_react_native!(
     :path => config[:reactNativePath],
@@ -650,46 +651,7 @@ useEffect(() => {
 - `failedToShowRewardedInterstitial4Adiscope`시 [AdiscopeError 참고](./docs/error_info.md)    
 <br/><br/><br/>
 
-### 8. AdEvent
-#### A. Hook 호출
-```tsx
-const { showAdEvent4Adiscope, openedAdEvent4Adiscope, closedAdEvent4Adiscope, failedToShowAdEvent4Adiscope } = useAdEvent4Adiscope();
-```
-- 함수 및 콜백 변수를 사용 하기 위해서 선언
-<br/>
-
-#### B. Show
-```tsx
-const unitId = "";        // 관리자를 통해 발급
-await showAdEvent4Adiscope(unitId);
-```
-- `Show`가 실행되면 (return값이 True일 경우) `openedAdEvent4Adiscope`와 `failedToShowAdEvent4Adiscope` 중 하나가 항상 호출되고, `openedAdEvent4Adiscope`가 호출되었다면 이후 `closedAdEvent4Adiscope`가 항상 호출
-<br/>
-
-#### C. Callbacks
-```tsx
-useEffect(() => {
-  if (openedAdEvent4Adiscope) {
-    console.log(openedAdEvent4Adiscope['unitId']);
-  }
-}, [openedAdEvent4Adiscope]);
-useEffect(() => {
-  if (closedAdEvent4Adiscope) {
-    console.log(closedAdEvent4Adiscope['unitId']);
-  }
-}, [closedAdEvent4Adiscope]);
-useEffect(() => {
-  if (failedToShowAdEvent4Adiscope) {
-    console.log(failedToShowAdEvent4Adiscope['unitId'] + ", " + failedToShowAdEvent4Adiscope['errorCode'] + ", " + failedToShowAdEvent4Adiscope['errorDescription'] + ", " + failedToShowAdEvent4Adiscope['errorXB3TraceID']);
-  }
-}, [failedToShowAdEvent4Adiscope]);
-```
-- [Initialize](#2-initialize)를 실행 해야 Callbacks 호출
-- Show 성공 시 `openedAdEvent4Adiscope`, `closedAdEvent4Adiscope` callback이 순차적으로 호출
-- `failedToShowAdEvent4Adiscope`시 [AdiscopeError 참고](./docs/error_info.md)    
-<br/><br/><br/>
-
-### 9. Etc
+### 8. Etc
 #### A. Adiscope SDK Version
 ```tsx
 const result = await getSDKVersion4Adiscope();

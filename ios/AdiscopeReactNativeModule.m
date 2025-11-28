@@ -70,6 +70,29 @@ RCT_EXTERN_METHOD(
 )
 
 RCT_EXTERN_METHOD(
+    setShowWithLoad2BackgroundColor: (NSString *) red
+    green: (NSString *) green
+    blue: (NSString *) blue
+    alpha: (NSString *) alpha
+    resolver: (RCTPromiseResolveBlock *) resolve
+    rejecter:(RCTPromiseRejectBlock *) reject
+)
+
+RCT_EXTERN_METHOD(
+    setShowWithLoad2IndicatorStyleMedium: (BOOL) isMedium
+    isHidden: (BOOL) isHidden
+    resolver: (RCTPromiseResolveBlock *) resolve
+    rejecter:(RCTPromiseRejectBlock *) reject
+)
+
+RCT_EXTERN_METHOD(
+    setShowWithLoad2ErrorAlertMsg: (NSString *) msg
+    isHidden: (BOOL) isHidden
+    resolver: (RCTPromiseResolveBlock *) resolve
+    rejecter:(RCTPromiseRejectBlock *) reject
+)
+
+RCT_EXTERN_METHOD(
     showOfferwall: (NSString *) unitId
     excludeAdTypeList: (NSArray<NSString> *) excludeAdTypeList
     resolver: (RCTPromiseResolveBlock *) resolve
@@ -97,6 +120,12 @@ RCT_EXTERN_METHOD(
 )
 
 RCT_EXTERN_METHOD(
+    showWithLoad: (NSString *) unitId
+    resolver: (RCTPromiseResolveBlock *) resolve
+    rejecter:(RCTPromiseRejectBlock *) reject
+)
+
+RCT_EXTERN_METHOD(
     load: (NSString *) unitId
     resolver: (RCTPromiseResolveBlock *) resolve
     rejecter:(RCTPromiseRejectBlock *) reject
@@ -111,6 +140,12 @@ RCT_EXTERN_METHOD(
 RCT_EXTERN_METHOD(
     show: (RCTPromiseResolveBlock *) resolve
     rejecter: (RCTPromiseRejectBlock *) reject
+)
+
+RCT_EXTERN_METHOD(
+    showWithLoadInterstitial: (NSString *) unitId
+    resolver: (RCTPromiseResolveBlock *) resolve
+    rejecter:(RCTPromiseRejectBlock *) reject
 )
 
 RCT_EXTERN_METHOD(

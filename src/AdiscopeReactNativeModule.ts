@@ -101,3 +101,27 @@ export const setVolumeOff4Adiscope = (isOn: boolean) => {
       console.log(JSON.stringify(error), 'error');
     });
 }
+
+export const setShowWithLoad2BackgroundColor4Adiscope = (red: string, green: string, blue: string, alpha: string) => {
+  return AdiscopeReactNativeModule.setShowWithLoad2BackgroundColor(red, green, blue, alpha)
+    .then((data: any) => data)
+    .catch((error: any) => {
+      console.log(JSON.stringify(error), 'error');
+    });
+}
+
+export const setShowWithLoad2IndicatorStyleMedium4Adiscope = (isMedium: boolean, isHidden: boolean) => {
+  return AdiscopeReactNativeModule.setShowWithLoad2IndicatorStyleMedium(isMedium, isHidden)
+    .then((data: any) => data)
+    .catch((error: any) => {
+      console.log(JSON.stringify(error), 'error');
+    });
+}
+
+export const setShowWithLoad2ErrorAlertMsg4Adiscope = (msg: string, isHidden: boolean) => {
+  return AdiscopeReactNativeModule.setShowWithLoad2ErrorAlertMsg(msg, isHidden)
+    .then((data: any) => data)
+    .catch((error: any) => {
+      console.log(JSON.stringify(error), 'error');
+    });
+}
