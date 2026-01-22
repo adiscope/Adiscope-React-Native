@@ -1,7 +1,7 @@
 # Adiscope React Native
-[![GitHub package.json version](https://img.shields.io/badge/ReactNative-5.0.1-blue)](https://github.com/adiscope/Adiscope-React-Native/releases)
-[![GitHub package.json version](https://img.shields.io/badge/Android-5.0.0-blue)](https://github.com/adiscope/Adiscope-Android-Sample)
-[![GitHub package.json version](https://img.shields.io/badge/iOS-5.0.0-blue)](https://github.com/adiscope/Adiscope-iOS-Sample)
+[![GitHub package.json version](https://img.shields.io/badge/ReactNative-5.0.2-blue)](https://github.com/adiscope/Adiscope-React-Native/releases)
+[![GitHub package.json version](https://img.shields.io/badge/Android-5.0.2-blue)](https://github.com/adiscope/Adiscope-Android-Sample)
+[![GitHub package.json version](https://img.shields.io/badge/iOS-5.0.2-blue)](https://github.com/adiscope/Adiscope-iOS-Sample)
 [![GitHub package.json version](https://img.shields.io/badge/Unity-5.0.0-blue)](https://github.com/adiscope/Adiscope-Unity-UPM)
 [![GitHub package.json version](https://img.shields.io/badge/Flutter-5.0.0-blue)](https://pub.dev/packages/adiscope_flutter_plugin)
 
@@ -80,7 +80,7 @@ npm install @adiscope.ad/adiscope-react-native
 
 #### B. Specific version Installation
 ```ruby
-npm install @adiscope.ad/adiscope-react-native@5.0.0
+npm install @adiscope.ad/adiscope-react-native@5.0.2
 ```
 - 프로젝트의 IDE루트 경로에서 터미널을 열고 위과 같이 특정 버전을 추가로 실행하여 설치    
 <br/><br/><br/>
@@ -125,12 +125,12 @@ android {
 target 'AdiscopeReactNativeExample' do
   config = use_native_modules!
 
-  pod 'AdiscopeMediaAdManager', '5.0.0'
-  pod 'AdiscopeMediaAdMob', '5.0.0'
-  pod 'AdiscopeMediaChartBoost', '5.0.0'
-  pod 'AdiscopeMediaPangle', '5.0.0'
-  pod 'AdiscopeMediaVungle', '5.0.0'
-  pod 'AdiscopeMediaMax', '5.0.0'
+  pod 'AdiscopeMediaAdManager', '5.0.2'
+  pod 'AdiscopeMediaAdMob', '5.0.2'
+  pod 'AdiscopeMediaChartBoost', '5.0.2'
+  pod 'AdiscopeMediaPangle', '5.0.2'
+  pod 'AdiscopeMediaVungle', '5.0.2'
+  pod 'AdiscopeMediaMax', '5.0.2'
   pod 'AdiscopeMediaMaxAdapterAdManager', '5.0.0'
   pod 'AdiscopeMediaMaxAdapterAdMob', '5.0.0'
   pod 'AdiscopeMediaMaxAdapterAmazon', '5.0.0'

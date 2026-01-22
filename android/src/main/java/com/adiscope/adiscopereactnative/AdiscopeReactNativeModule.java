@@ -458,15 +458,15 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
  
   @ReactMethod
   public void show(Promise promise) {
+    Activity currentActivity = getCurrentActivity();
     if (mRewardedVideoAd == null) {
-      Activity currentActivity = getCurrentActivity();
       if (currentActivity != null) {
         mRewardedVideoAd = AdiscopeSdk.getRewardedVideoAdInstance(currentActivity);
       }
     }
     if (mRewardedVideoAd != null) {
       mRewardedVideoAd.setRewardedVideoAdListener(mRewardedVideoAdListener());
-      boolean result = mRewardedVideoAd.show();
+      boolean result = mRewardedVideoAd.show(currentActivity);
       promise.resolve(result);
     } else {
       promise.resolve(false);
@@ -560,15 +560,15 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
  
   @ReactMethod
   public void showInterstitial(Promise promise) {
+    Activity currentActivity = getCurrentActivity();
     if (mInterstitialAd == null) {
-      Activity currentActivity = getCurrentActivity();
       if (currentActivity != null) {
         mInterstitialAd = AdiscopeSdk.getInterstitialAdInstance(currentActivity);
       }
     }
     if (mInterstitialAd != null) {
       mInterstitialAd.setInterstitialAdListener(mInterstitialAdListener());
-      boolean result = mInterstitialAd.show();
+      boolean result = mInterstitialAd.show(currentActivity);
       promise.resolve(result);
     } else {
       promise.resolve(false);
