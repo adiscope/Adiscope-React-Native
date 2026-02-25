@@ -8,7 +8,9 @@ import { useOfferwall4Adiscope, useAdEvent4Adiscope, useRewardedVideo4Adiscope, 
 // Other
 import { getSDKVersion4Adiscope, getNetworksVersions4Adiscope, getUnitStatus4Adiscope, setVolumeOff4Adiscope, 
   showAdmobMediationDebugger4Adiscope, showMaxMediationDebugger4Adiscope, setShowWithLoad2BackgroundColor4Adiscope,
-  setShowWithLoad2IndicatorStyleMedium4Adiscope, setShowWithLoad2ErrorAlertMsg4Adiscope } from '@adiscope.ad/adiscope-react-native';
+  setShowWithLoad2IndicatorStyleMedium4Adiscope, setShowWithLoad2ErrorAlertMsg4Adiscope, showLuckyEvent4Adiscope,
+  setLuckyEventAppId4Adiscope, setLuckyEventUseSafeAreaWebView4Adiscope, setLuckyEventHashMark4Adiscope,
+  setLuckyEventBaseUrl4Adiscope, setLuckyEventExtraParam4Adiscope } from '@adiscope.ad/adiscope-react-native';
 
 export default function App() {
 
@@ -30,6 +32,8 @@ export default function App() {
   const offerwallId: string = Platform.OS === 'android' ? '' : '';
   const offerwallDetailId: string = Platform.OS === 'android' ? '' : '';
   const adEventUnitId: string = Platform.OS === 'android' ? '' : '';
+  const luckyEventAppId: string = Platform.OS === 'android' ? '' : '';
+  const luckyEventPubId: string = Platform.OS === 'android' ? '' : '';
   const rvUnitId: string = Platform.OS === 'android' ? '' : '';
   const itUnitId: string = Platform.OS === 'android' ? '' : '';
   const riUnitId: string = Platform.OS === 'android' ? '' : '';
@@ -264,6 +268,25 @@ export default function App() {
   const btnShowAdEvent = async () => {
     const result = await showAdEvent4Adiscope(strAdEventUnitId);
     setLogText('Show AdEvent => ' + result);
+  }
+  // End AdEvent
+
+  // Start LuckyEvent
+  const [strLuckyEventAppId, setStrLuckyEventAppId] = useState(luckyEventAppId);
+  const luckyEventAppIdTextChange = (newText: string) => {
+    setStrLuckyEventAppId(newText);
+  };
+  const [strLuckyEventPubId, setStrLuckyEventPubId] = useState(luckyEventPubId);
+  const luckyEventPubIdTextChange = (newText: string) => {
+    setStrLuckyEventPubId(newText);
+  };
+  const btnShowLuckyEvent = async () => {
+    const result = await showLuckyEvent4Adiscope();
+    setLogText('Show Lucky Event => ' + result);
+  }
+  const btnSetLuckyEventAppId = async () => {
+    const result = await setLuckyEventAppId4Adiscope(strLuckyEventAppId, strLuckyEventPubId);
+    setLogText('Show Lucky Event => ' + result);
   }
   // End AdEvent
 
@@ -639,6 +662,22 @@ export default function App() {
         </View>
         <TouchableOpacity style={styles.button} onPress={btnShowAdEvent}>
           <Text style={styles.button_name}>Show AdEvent</Text>
+        </TouchableOpacity>
+
+        <Text style={styles.subTitle}>Lucky Event</Text>
+        <View style={styles.textInputContainer}>
+          <Text style={styles.textInputTitle}>App ID</Text>
+          <TextInput style={styles.textInput} value={strLuckyEventAppId} onChangeText={luckyEventAppIdTextChange} />
+        </View>
+        <View style={styles.textInputContainer}>
+          <Text style={styles.textInputTitle}>App ID</Text>
+          <TextInput style={styles.textInput} value={strLuckyEventPubId} onChangeText={luckyEventPubIdTextChange} />
+        </View>
+        <TouchableOpacity style={styles.button} onPress={btnSetLuckyEventAppId}>
+          <Text style={styles.button_name}>Set Lucky Event</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={btnShowLuckyEvent}>
+          <Text style={styles.button_name}>Show Lucky Event</Text>
         </TouchableOpacity>
 
         <Text style={styles.subTitle}>RewardedVideo</Text>

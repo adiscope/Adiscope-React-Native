@@ -114,6 +114,43 @@ RCT_EXTERN_METHOD(
 )
 
 RCT_EXTERN_METHOD(
+    showLuckyEvent: (RCTPromiseResolveBlock *) resolve
+    rejecter: (RCTPromiseRejectBlock *) reject
+)
+
+RCT_EXTERN_METHOD(
+    setLuckyEventAppId: (NSString *) appId
+    pubId: (NSString *) pubId
+    resolver: (RCTPromiseResolveBlock *) resolve
+    rejecter:(RCTPromiseRejectBlock *) reject
+)
+
+RCT_EXTERN_METHOD(
+    setLuckyEventUseSafeAreaWebView: (BOOL) useSafeArea
+    resolver: (RCTPromiseResolveBlock *) resolve
+    rejecter:(RCTPromiseRejectBlock *) reject
+)
+
+RCT_EXTERN_METHOD(
+    setLuckyEventHashMark: (NSString *) hashMark
+    resolver: (RCTPromiseResolveBlock *) resolve
+    rejecter:(RCTPromiseRejectBlock *) reject
+)
+
+RCT_EXTERN_METHOD(
+    setLuckyEventBaseUrl: (NSString *) baseUrl
+    resolver: (RCTPromiseResolveBlock *) resolve
+    rejecter:(RCTPromiseRejectBlock *) reject
+)
+
+RCT_EXTERN_METHOD(
+    setLuckyEventExtraParam: (NSString *) key
+    value: (NSString *) value
+    resolver: (RCTPromiseResolveBlock *) resolve
+    rejecter:(RCTPromiseRejectBlock *) reject
+)
+
+RCT_EXTERN_METHOD(
     showAdEvent: (NSString *) unitId
     resolver: (RCTPromiseResolveBlock *) resolve
     rejecter:(RCTPromiseRejectBlock *) reject

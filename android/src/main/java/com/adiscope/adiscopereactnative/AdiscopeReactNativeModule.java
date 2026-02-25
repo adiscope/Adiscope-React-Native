@@ -36,6 +36,8 @@ import com.nps.adiscope.interstitial.InterstitialAdListener;
 import com.nps.adiscope.rewardedinterstitial.RewardedInterstitialAd;
 import com.nps.adiscope.rewardedinterstitial.RewardedInterstitialAdShowListener;
 
+import com.adiscope.luckyevent.tnk.TnkEventActivity;
+
 import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
@@ -56,6 +58,15 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
   private static RewardedVideoAd mRewardedVideoAd;
   private static InterstitialAd mInterstitialAd;
   private static RewardedInterstitialAd mRewardedInterstitialAd;
+
+  private String userId;
+  private String childYN = "";
+  private String mLuckyEventAppId = "";
+  private String mLuckyEventPubId = "";
+  private boolean mLuckyEventUseSafeArea = false;
+  private String mLuckyEventHashMark = "";
+  private String mLuckyEventBaseUrl = "";
+  private Map<String, String> mLuckyEventExtraParams = new HashMap<>();
 
   public AdiscopeReactNativeModule(ReactApplicationContext reactContext) {
     super(reactContext);
@@ -87,6 +98,10 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
       result.putBoolean("isSuccess", false);
       promise.resolve(result);
       return;
+    }
+
+    if (childYN != null && !childYN.isEmpty()) {
+      this.childYN = childYN;
     }
 
     AdiscopeInitializeListener initializeListener = new AdiscopeInitializeListener() {
@@ -137,6 +152,7 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void setUserId(String userId, Promise promise) {
+    this.userId = userId;
     AdiscopeSdk.setUserId(userId);
     promise.resolve(true);
   }
@@ -703,5 +719,55 @@ public class AdiscopeReactNativeModule extends ReactContextBaseJavaModule {
       promise.resolve(false);
       promise.reject("exception", "not RewardedInterstitialAd");
     }
+  }
+
+  @ReactMethod
+  public void showLuckyEvent(Promise promise) {
+    Activity currentActivity = getCurrentActivity();
+    if (currentActivity == null) {
+      promise.resolve(false);
+      return;
+    }
+    try {
+      new TnkEventActivity.TnkEventBuilder()
+          .setUserName(userId)
+          .setEventIdTnkAppId(mLuckyEventAppId, mLuckyEventPubId)
+          .setChildYn(childYN)
+          .show(currentActivity);
+      promise.resolve(true);
+    } catch (Exception e) {
+      promise.reject("ERROR", e.getMessage());
+    }
+  }
+
+  @ReactMethod
+  public void setLuckyEventAppId(String appId, String pubId, Promise promise) {
+    mLuckyEventAppId = appId;
+    mLuckyEventPubId = pubId;
+    promise.resolve(true);
+  }
+
+  @ReactMethod
+  public void setLuckyEventUseSafeAreaWebView(boolean useSafeArea, Promise promise) {
+    mLuckyEventUseSafeArea = useSafeArea;
+    promise.resolve(true);
+  }
+
+  @ReactMethod
+  public void setLuckyEventHashMark(String hashMark, Promise promise) {
+    mLuckyEventHashMark = hashMark;
+    promise.resolve(true);
+  }
+
+  @ReactMethod
+  public void setLuckyEventBaseUrl(String baseUrl, Promise promise) {
+    mLuckyEventBaseUrl = baseUrl;
+    promise.resolve(true);
+  }
+
+  @ReactMethod
+  public void setLuckyEventExtraParam(String key, String value, Promise promise) {
+    mLuckyEventExtraParams.put(key, value);
+    promise.resolve(true);
   }
 }

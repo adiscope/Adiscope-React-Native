@@ -125,3 +125,51 @@ export const setShowWithLoad2ErrorAlertMsg4Adiscope = (msg: string, isHidden: bo
       console.log(JSON.stringify(error), 'error');
     });
 }
+
+export const showLuckyEvent4Adiscope = () => {
+  return AdiscopeReactNativeModule.showLuckyEvent()
+    .then((data: any) => data)
+    .catch((error: any) => {
+      console.log(JSON.stringify(error), 'error');
+    });
+}
+
+export const setLuckyEventAppId4Adiscope = (appId: string, pubId: string) => {
+  return AdiscopeReactNativeModule.setLuckyEventAppId(appId, pubId)
+    .then((data: any) => data)
+    .catch((error: any) => {
+      console.log(JSON.stringify(error), 'error');
+    });
+}
+
+export const setLuckyEventUseSafeAreaWebView4Adiscope = (useSafeArea: boolean) => {
+  return AdiscopeReactNativeModule.setLuckyEventUseSafeAreaWebView(useSafeArea)
+    .then((data: any) => data)
+    .catch((error: any) => {
+      console.log(JSON.stringify(error), 'error');
+    });
+}
+
+export const setLuckyEventHashMark4Adiscope = (hashMark: string) => {
+  return AdiscopeReactNativeModule.setLuckyEventHashMark(hashMark)
+    .then((data: any) => data)
+    .catch((error: any) => {
+      console.log(JSON.stringify(error), 'error');
+    });
+}
+
+export const setLuckyEventBaseUrl4Adiscope = (baseUrl: string) => {
+  return AdiscopeReactNativeModule.setLuckyEventBaseUrl(baseUrl)
+    .then((data: any) => data)
+    .catch((error: any) => {
+      console.log(JSON.stringify(error), 'error');
+    });
+}
+
+export const setLuckyEventExtraParam4Adiscope = (key: string, value: string) => {
+  return AdiscopeReactNativeModule.setLuckyEventExtraParam(key, value)
+    .then((data: any) => data)
+    .catch((error: any) => {
+      console.log(JSON.stringify(error), 'error');
+    });
+}

@@ -130,10 +130,7 @@ class AdiscopeReactNativeModule: RCTEventEmitter {
 
     @objc(showAdmobMediationDebugger:rejecter:)
     func showAdmobMediationDebugger(_ resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
-        DispatchQueue.main.async {
-            self.adiscope.showAdmobMediationDebugger()
-            resolve(true)
-        }
+        resolve(false)
     }
 
     @objc(setVolumeOff:resolver:rejecter:)
@@ -224,10 +221,55 @@ class AdiscopeReactNativeModule: RCTEventEmitter {
 
     @objc(showAdEvent:resolver:rejecter:)
     func showAdEvent(_ unitId: String, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
-        adiscope.setMainDelegate(self)
+        resolve(false)
+    }
+
+
+    @objc(showLuckyEvent:rejecter:)
+    func showLuckyEvent(_ resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
         DispatchQueue.main.async {
-            let result = self.adiscope.showAdEvent(unitId)
-            resolve(result)
+            self.adiscope.showLuckyEvent()
+            resolve(true)
+        }
+    }
+
+    @objc(setLuckyEventAppId:pubId:resolver:rejecter:)
+    func setLuckyEventAppId(_ appId: String, pubId: String, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
+        DispatchQueue.main.async {
+            self.adiscope.setLuckyEventAppId(appId, pubId: pubId)
+            resolve(true)
+        }
+    }
+
+    @objc(setLuckyEventUseSafeAreaWebView:resolver:rejecter:)
+    func setLuckyEventUseSafeAreaWebView(_ useSafeArea: Bool, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
+        DispatchQueue.main.async {
+            self.adiscope.setLuckyEventUseSafeAreaWebView(useSafeArea)
+            resolve(true)
+        }
+    }
+
+    @objc(setLuckyEventHashMark:resolver:rejecter:)
+    func setLuckyEventHashMark(_ hashMark: String, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
+        DispatchQueue.main.async {
+            self.adiscope.setLuckyEventHashMark(hashMark)
+            resolve(true)
+        }
+    }
+
+    @objc(setLuckyEventBaseUrl:resolver:rejecter:)
+    func setLuckyEventBaseUrl(_ baseUrl: String, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
+        DispatchQueue.main.async {
+            self.adiscope.setLuckyEventBaseUrl(baseUrl)
+            resolve(true)
+        }
+    }
+
+    @objc(setLuckyEventExtraParam:Value:resolver:rejecter:)
+    func setLuckyEventExtraParam(_ appId: String, value: String, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
+        DispatchQueue.main.async {
+            self.adiscope.setLuckyEventExtraParam(appId, value: value)
+            resolve(true)
         }
     }
 
