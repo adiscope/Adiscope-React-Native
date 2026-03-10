@@ -2,7 +2,7 @@
 [![GitHub package.json version](https://img.shields.io/badge/ReactNative-5.2.0-blue)](https://github.com/adiscope/Adiscope-React-Native/releases)
 [![GitHub package.json version](https://img.shields.io/badge/Android-5.2.0-blue)](https://github.com/adiscope/Adiscope-Android-Sample)
 [![GitHub package.json version](https://img.shields.io/badge/iOS-5.2.0-blue)](https://github.com/adiscope/Adiscope-iOS-Sample)
-[![GitHub package.json version](https://img.shields.io/badge/Unity-5.2.0-blue)](https://github.com/adiscope/Adiscope-Unity-UPM)
+[![GitHub package.json version](https://img.shields.io/badge/Unity-5.2.1-blue)](https://github.com/adiscope/Adiscope-Unity-UPM)
 [![GitHub package.json version](https://img.shields.io/badge/Flutter-5.2.0-blue)](https://pub.dev/packages/adiscope_flutter_plugin)
 
 - ⚠️ **Expo 지원 불가**
@@ -193,7 +193,7 @@ pod install --repo-update
 #### C. Setup Plist
 - 프로젝트 파일 내에 {projectroot}/ios/{프로젝트 이름}/Info.plist 파일에 추가
 
-##### 가. AdiscopeMediaId, AdiscopeMediaSecret 추가
+##### 가. [필수] AdiscopeMediaId, AdiscopeMediaSecret 추가
 ```xml
 <key>AdiscopeMediaId</key>
 <string>{media id 기입 필요}</string>
@@ -202,7 +202,7 @@ pod install --repo-update
 ```
 <br/>
 
-##### 나. App Tracking Permission 추가
+##### 나. [필수] App Tracking Permission 추가
 ```xml
 <key>NSUserTrackingUsageDescription</key>
 <string></string>
@@ -210,7 +210,7 @@ pod install --repo-update
 - ex : Some ad content may require access to the user tracking.
 <br/>
 
-##### 다. SKAdNetwork 추가 ([Download](https://github.com/adiscope/Adiscope-iOS-Sample/releases/download/3.8.0/AdiscopeSkAdNetworks.plist))
+##### 다. [필수] SKAdNetwork 추가 ([Download](https://github.com/adiscope/Adiscope-iOS-Sample/releases/download/3.8.0/AdiscopeSkAdNetworks.plist))
 ```xml
 <dict>
     <key>SKAdNetworkItems</key>
@@ -223,9 +223,23 @@ pod install --repo-update
 </dict>
 ```
 - SKAdNetwork Download File 내용 추가 ([Download](https://github.com/adiscope/Adiscope-iOS-Sample/releases/download/3.8.0/AdiscopeSkAdNetworks.plist))
+- 2026년 3월 9일에 마지막으로 파일 내용 추가
 <br/>
 
-##### 라. Admob, Max의 Admob 사용 시 추가
+##### 라. (선택) liftoff 사용 시 AdNetworkIdentifiers 추가 ([Download](https://github.com/adiscope/Adiscope-iOS-Sample/releases/download/3.8.0/AdiscopeAdNetworks.plist))
+```xml
+<dict>
+    <key>AdNetworkIdentifiers</key>
+    <array>
+	    <string></string>
+    </array>
+</dict>
+```
+- SKAdNetwork Download File 내용 추가 ([Download](https://github.com/adiscope/Adiscope-iOS-Sample/releases/download/3.8.0/AdiscopeAdNetworks.plist))
+- 2026년 3월 9일에 마지막으로 파일 내용 추가
+<br/>
+
+##### 라. (선택) Admob or Max의 Admob 사용 시 추가
 ```xml
 <key>GADIsAdManagerApp</key>
 <true/>
