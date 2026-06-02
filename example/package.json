@@ -1,6 +1,6 @@
 {
   "name": "@adiscope.ad/adiscope-react-native-example",
-  "version": "5.0.2",
+  "version": "5.3.1",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -24,7 +24,7 @@
     "@react-native/eslint-config": "0.78.0",
     "@react-native/metro-config": "0.78.0",
     "@react-native/typescript-config": "0.78.0",
-    "@types/react": "^19.0.0",
+    "@types/react": "19.0.0",
     "@types/react-test-renderer": "^19.0.0",
     "babel-jest": "^29.6.3",
     "eslint": "^8.19.0",

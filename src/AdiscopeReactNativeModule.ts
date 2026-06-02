@@ -46,6 +46,14 @@ export const setUserId4Adiscope = (userId: string) => {
     });
 }
 
+export const setUserIdChild4Adiscope = (userId: string, child: number) => {
+  return AdiscopeReactNativeModule.setUserIdChild(userId, child)
+    .then((data: any) => data)
+    .catch((error: any) => {
+      console.log(JSON.stringify(error), 'error');
+    });
+}
+
 export const setRewardedCheckParam4Adiscope = (param: string) => {
   return AdiscopeReactNativeModule.setRewardedCheckParam(param)
     .then((data: any) => data)

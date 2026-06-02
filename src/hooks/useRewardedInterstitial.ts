@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useReducer, type Reducer } from 'react';
+import { useCallback, useEffect, useReducer } from 'react';
 import { NativeModules, Platform, NativeEventEmitter } from 'react-native';
 
 const LINKING_ERROR =
@@ -37,9 +37,16 @@ const initialState: RewardedInterstitialState = {
 };
 
 export default function useRewardedInterstitial4Adiscope(unitId?: string, unitIds?: string[]): any {
-  const [stateRewardedInterstitial4Adiscope, setStateRewardedInterstitial4Adiscope] = useReducer<
-    Reducer<RewardedInterstitialState, Partial<RewardedInterstitialState>>
-  >((prevState, newState) => ({ ...prevState, ...newState }), initialState);
+  const [stateRewardedInterstitial4Adiscope, setStateRewardedInterstitial4Adiscope] = useReducer(
+    (
+      prevState: RewardedInterstitialState,
+      newState: Partial<RewardedInterstitialState>
+    ) => ({
+      ...prevState,
+      ...newState,
+    }),
+    initialState
+  );
 
   const getUnitStatusRewardedInterstitial4Adiscope = useCallback(async (unitId?: string) => {
     return AdiscopeReactNativeModule.getUnitStatusRewardedInterstitial(unitId)

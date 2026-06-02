@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useReducer, type Reducer } from 'react';
+import { useCallback, useEffect, useReducer } from 'react';
 import { NativeModules, Platform, NativeEventEmitter } from 'react-native';
 
 const LINKING_ERROR =
@@ -39,9 +39,13 @@ const initialState: InterstitialState = {
 };
 
 export default function useInterstitial4Adiscope(unitId?: string): any {
-  const [stateInterstitial4Adiscope, setStateInterstitial4Adiscope] = useReducer<
-    Reducer<InterstitialState, Partial<InterstitialState>>
-  >((prevState, newState) => ({ ...prevState, ...newState }), initialState);
+  const [stateInterstitial4Adiscope, setStateInterstitial4Adiscope] = useReducer(
+    (prevState: InterstitialState, newState: Partial<InterstitialState>) => ({
+      ...prevState,
+      ...newState,
+    }),
+    initialState
+  );
 
   const showWithLoadInterstitial4Adiscope = useCallback(async (unitIdOverride?: string) => {
     const effectiveUnitId = unitIdOverride || unitId;

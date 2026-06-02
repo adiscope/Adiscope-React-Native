@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useReducer, type Reducer } from 'react';
+import { useCallback, useEffect, useReducer } from 'react';
 import { NativeModules, Platform, NativeEventEmitter } from 'react-native';
 
 const LINKING_ERROR =
@@ -33,9 +33,13 @@ const initialState: OfferwallState = {
 };
 
 export default function useOfferwall4Adiscope(unitId?: string, detailId?: string, detailUrl?: string, excludeAdTypeList?: string[]): any {
-  const [stateOfferwall4Adiscope, setStateOfferwall4Adiscope] = useReducer<
-    Reducer<OfferwallState, Partial<OfferwallState>>
-  >((prevState, newState) => ({ ...prevState, ...newState }), initialState);
+  const [stateOfferwall4Adiscope, setStateOfferwall4Adiscope] = useReducer(
+    (prevState: OfferwallState, newState: Partial<OfferwallState>) => ({
+      ...prevState,
+      ...newState,
+    }),
+    initialState
+  );
 
   const showOfferwall4Adiscope = useCallback(async (unitIdOverride?: string, excludeAdTypeListOverride?: string[]) => {
     const effectiveUnitId = unitIdOverride || unitId;

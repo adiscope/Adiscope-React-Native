@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, TextInput, Platform, View } from 'react-native';
 // 초기 실행
-import { initialize4Adiscope, isInitialize4Adiscope, setUserId4Adiscope, setRewardedCheckParam4Adiscope } from '@adiscope.ad/adiscope-react-native';
-// Offerwall, AdEvent, RewardedVideo, Interstitial, RewardedInterstitial
-import { useOfferwall4Adiscope, useAdEvent4Adiscope, useRewardedVideo4Adiscope, useInterstitial4Adiscope,
+import { initialize4Adiscope, isInitialize4Adiscope, setUserId4Adiscope, setUserIdChild4Adiscope, setRewardedCheckParam4Adiscope } from '@adiscope.ad/adiscope-react-native';
+// Offerwall, RewardedVideo, Interstitial, RewardedInterstitial
+import { useOfferwall4Adiscope, useRewardedVideo4Adiscope, useInterstitial4Adiscope,
   useRewardedInterstitial4Adiscope } from '@adiscope.ad/adiscope-react-native';
 // Other
-import { getSDKVersion4Adiscope, getNetworksVersions4Adiscope, getUnitStatus4Adiscope, setVolumeOff4Adiscope, 
+import { getSDKVersion4Adiscope, getNetworksVersions4Adiscope, getUnitStatus4Adiscope, setVolumeOff4Adiscope,
   showAdmobMediationDebugger4Adiscope, showMaxMediationDebugger4Adiscope, setShowWithLoad2BackgroundColor4Adiscope,
   setShowWithLoad2IndicatorStyleMedium4Adiscope, setShowWithLoad2ErrorAlertMsg4Adiscope, showLuckyEvent4Adiscope,
   setLuckyEventAppId4Adiscope, setLuckyEventUseSafeAreaWebView4Adiscope, setLuckyEventHashMark4Adiscope,
@@ -28,10 +28,10 @@ export default function App() {
   const mediaSecret: string = Platform.OS === 'android' ? '' : '';
   const customData: string = '';
   const userId: string = 'React_Native_Tester_User';
-  const subDomain: string = '';
+  const child: string = '0';
+  const subDomain: string = 'link';
   const offerwallId: string = Platform.OS === 'android' ? '' : '';
   const offerwallDetailId: string = Platform.OS === 'android' ? '' : '';
-  const adEventUnitId: string = Platform.OS === 'android' ? '' : '';
   const luckyEventAppId: string = Platform.OS === 'android' ? '' : '';
   const luckyEventPubId: string = Platform.OS === 'android' ? '' : '';
   const rvUnitId: string = Platform.OS === 'android' ? '' : '';
@@ -58,7 +58,18 @@ export default function App() {
     setLogText('Set User Id =>' + strUserId + ' / ' + result);
   };
   // End Set User Id
-  
+
+  // Start Set User Id
+  const [strChild, setStrChild] = useState(child);
+  const childTextChange = (newText: string) => {
+    setStrChild(newText);
+  };
+  const btnSetUserIdChild = async () => {
+    const result = await setUserIdChild4Adiscope(strUserId, parseInt(strChild, 10));
+    setLogText('Set User Id & Child =>' + strUserId + ' / ' + strChild + ' / ' + result);
+  };
+  // End Set User Id
+
   const [strCallbackTag, setStrCallbackTag] = useState('');
   const callbackTagTextChange = (newText: string) => {
     setStrCallbackTag(newText);
@@ -78,7 +89,7 @@ export default function App() {
     setLogText('Set CustomData =>' + strCustomData + ' / ' + result);
   };
   // End Set CustomData
-  
+
   // Start Initialize
   const [statusInitialize, setStatusInitialize] = useState({
     isSuccess: false,
@@ -231,9 +242,9 @@ export default function App() {
   }
 
   // Start Offerwall
-  const { showOfferwall4Adiscope, showOfferwallDetail4Adiscope, showOfferwallDetailFromUrl4Adiscope, 
+  const { showOfferwall4Adiscope, showOfferwallDetail4Adiscope, showOfferwallDetailFromUrl4Adiscope,
     openedOfferwall4Adiscope, closedOfferwall4Adiscope, failedToShowOfferwall4Adiscope } = useOfferwall4Adiscope();
-    
+
   const [strOfferwallUnitId, setStrOfferwallUnitId] = useState(offerwallId);
   const offerwallUnitIdTextChange = (newText: string) => {
     setStrOfferwallUnitId(newText);
@@ -258,19 +269,6 @@ export default function App() {
   }
   // End Offerwall
 
-  // Start AdEvent
-  const { showAdEvent4Adiscope, openedAdEvent4Adiscope, closedAdEvent4Adiscope, failedToShowAdEvent4Adiscope } = useAdEvent4Adiscope();
-    
-  const [strAdEventUnitId, setStrAdEventUnitId] = useState(adEventUnitId);
-  const adEventUnitIdTextChange = (newText: string) => {
-    setStrAdEventUnitId(newText);
-  };
-  const btnShowAdEvent = async () => {
-    const result = await showAdEvent4Adiscope(strAdEventUnitId);
-    setLogText('Show AdEvent => ' + result);
-  }
-  // End AdEvent
-
   // Start LuckyEvent
   const [strLuckyEventAppId, setStrLuckyEventAppId] = useState(luckyEventAppId);
   const luckyEventAppIdTextChange = (newText: string) => {
@@ -288,11 +286,11 @@ export default function App() {
     const result = await setLuckyEventAppId4Adiscope(strLuckyEventAppId, strLuckyEventPubId);
     setLogText('Show Lucky Event => ' + result);
   }
-  // End AdEvent
+  // End LuckyEvent
 
   // Start RewardedVideo
-  const { showWithLoadRewardedVideo4Adiscope, loadRewardedVideo4Adiscope, isLoadedRewardedVideo4Adiscope, 
-    showRewardedVideo4Adiscope, loadedRewardedVideo4Adiscope, failedToLoadRewardedVideo4Adiscope, 
+  const { showWithLoadRewardedVideo4Adiscope, loadRewardedVideo4Adiscope, isLoadedRewardedVideo4Adiscope,
+    showRewardedVideo4Adiscope, loadedRewardedVideo4Adiscope, failedToLoadRewardedVideo4Adiscope,
     openedRewardedVideo4Adiscope, closedRewardedVideo4Adiscope, rewardedRewardedVideo4Adiscope,
     failedToShowRewardedVideo4Adiscope } = useRewardedVideo4Adiscope();
 
@@ -319,8 +317,8 @@ export default function App() {
   // End RewardedVideo
 
   // Start Interstitial
-  const { showWithLoadInterstitial4Adiscope, loadInterstitial4Adiscope, isLoadedInterstitial4Adiscope, 
-    showInterstitial4Adiscope, loadedInterstitial4Adiscope, failedToLoadInterstitial4Adiscope, 
+  const { showWithLoadInterstitial4Adiscope, loadInterstitial4Adiscope, isLoadedInterstitial4Adiscope,
+    showInterstitial4Adiscope, loadedInterstitial4Adiscope, failedToLoadInterstitial4Adiscope,
     openedInterstitial4Adiscope, closedInterstitial4Adiscope, failedToShowInterstitial4Adiscope } = useInterstitial4Adiscope();
 
   const [strInterstitialUnitId, setStrInterstitialUnitId] = useState(itUnitId);
@@ -425,24 +423,6 @@ export default function App() {
     }
   }, [failedToShowOfferwall4Adiscope]);
   // End Offerwall CallBack
-
-  // Start AdEvent CallBack
-  useEffect(() => {
-    if (openedAdEvent4Adiscope) {
-      setLogText('onAdEventOpened => ' + openedAdEvent4Adiscope['unitId']);
-    }
-  }, [openedAdEvent4Adiscope]);
-  useEffect(() => {
-    if (closedAdEvent4Adiscope) {
-      setLogText('onAdEventClosed => ' + closedAdEvent4Adiscope['unitId']);
-    }
-  }, [closedAdEvent4Adiscope]);
-  useEffect(() => {
-    if (failedToShowAdEvent4Adiscope) {
-      setLogText('onAdEventFailedToShow => ' + failedToShowAdEvent4Adiscope['unitId'] + ", " + failedToShowAdEvent4Adiscope['errorCode'] + ", " + failedToShowAdEvent4Adiscope['errorDescription']);
-    }
-  }, [failedToShowAdEvent4Adiscope]);
-  // End AdEvent CallBack
 
   // Start RewardedVideo CallBack
   useEffect(() => {
@@ -565,6 +545,13 @@ export default function App() {
           <Text style={styles.button_name}>Set User Id</Text>
         </TouchableOpacity>
         <View style={styles.textInputContainer}>
+          <Text style={styles.textInputTitle}>Child</Text>
+          <TextInput style={styles.textInput} value={strChild} onChangeText={childTextChange} />
+        </View>
+        <TouchableOpacity style={styles.button} onPress={btnSetUserIdChild}>
+          <Text style={styles.button_name}>Set Child (0:None, 1:Adult, 2:Child)</Text>
+        </TouchableOpacity>
+        <View style={styles.textInputContainer}>
           <Text style={styles.textInputTitle}>Callback Tag</Text>
           <TextInput style={styles.textInput} value={strCallbackTag} onChangeText={callbackTagTextChange} />
         </View>
@@ -654,15 +641,6 @@ export default function App() {
             <Text style={styles.button_name}>Show Offerwall Detail From URL</Text>
           </TouchableOpacity>
         </View>
-
-        <Text style={styles.subTitle}>AdEvent</Text>
-        <View style={styles.textInputContainer}>
-          <Text style={styles.textInputTitle}>Unit ID</Text>
-          <TextInput style={styles.textInput} value={strAdEventUnitId} onChangeText={adEventUnitIdTextChange} />
-        </View>
-        <TouchableOpacity style={styles.button} onPress={btnShowAdEvent}>
-          <Text style={styles.button_name}>Show AdEvent</Text>
-        </TouchableOpacity>
 
         <Text style={styles.subTitle}>Lucky Event</Text>
         <View style={styles.textInputContainer}>

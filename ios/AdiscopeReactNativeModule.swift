@@ -29,9 +29,6 @@ class AdiscopeReactNativeModule: RCTEventEmitter {
             "onOfferwallAdOpened",
             "onOfferwallAdClosed",
             "onOfferwallAdFailedToShow",
-            "onAdEventOpened",
-            "onAdEventClosed",
-            "onAdEventFailedToShow",
             "onRewardedVideoAdLoaded",
             "onRewardedVideoAdFailedToLoad",
             "onRewardedVideoAdOpened",
@@ -84,6 +81,20 @@ class AdiscopeReactNativeModule: RCTEventEmitter {
     @objc(setUserId:resolver:rejecter:)
     func setUserId(_ userId: String, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
         let result = adiscope.setUserId(userId)
+        resolve(result)
+    }
+
+    @objc(setUserIdChild:child:resolver:rejecter:)
+    func setUserIdChild(_ userId: String, child: Int, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
+        print("setUserId and child")
+        var result = false
+        if (child == 1) {
+            result = adiscope.setUserId(userId, child: .adult)
+        } else if (child == 2) {
+            result = adiscope.setUserId(userId, child: .child)
+        } else {
+            result = adiscope.setUserId(userId, child: .none)
+        }
         resolve(result)
     }
 
@@ -203,28 +214,6 @@ class AdiscopeReactNativeModule: RCTEventEmitter {
         }
     }
 
-
-    @objc
-    func onAdEventOpened(_ unitID: String!) {
-        sendEvent(withName: "onAdEventOpened", body: ["unitId": unitID])
-    }
-
-    @objc
-    func onAdEventClosed(_ unitID: String!) {
-        sendEvent(withName: "onAdEventClosed", body: ["unitId": unitID])
-    }
-
-    @objc
-    func onAdEventFailed(toShow unitID: String!, Error error: AdiscopeError!) {
-        sendEvent(withName: "onAdEventFailedToShow", body: ["unitId": unitID ?? "", "errorCode": error.code, "errorDescription": error.description])
-    }
-
-    @objc(showAdEvent:resolver:rejecter:)
-    func showAdEvent(_ unitId: String, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
-        resolve(false)
-    }
-
-
     @objc(showLuckyEvent:rejecter:)
     func showLuckyEvent(_ resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
         DispatchQueue.main.async {
@@ -265,7 +254,7 @@ class AdiscopeReactNativeModule: RCTEventEmitter {
         }
     }
 
-    @objc(setLuckyEventExtraParam:Value:resolver:rejecter:)
+    @objc(setLuckyEventExtraParam:value:resolver:rejecter:)
     func setLuckyEventExtraParam(_ appId: String, value: String, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock ) -> Void {
         DispatchQueue.main.async {
             self.adiscope.setLuckyEventExtraParam(appId, value: value)

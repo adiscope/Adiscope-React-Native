@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useReducer, type Reducer } from 'react';
+import { useCallback, useEffect, useReducer } from 'react';
 import { NativeModules, Platform, NativeEventEmitter } from 'react-native';
 
 const LINKING_ERROR =
@@ -41,9 +41,13 @@ const initialState: RewardedVideoState = {
 };
 
 export default function useRewardedVideo4Adiscope(unitId?: string): any {
-  const [stateRewardedVideo4Adiscope, setStateRewardedVideo4Adiscope] = useReducer<
-    Reducer<RewardedVideoState, Partial<RewardedVideoState>>
-  >((prevState, newState) => ({ ...prevState, ...newState }), initialState);
+  const [stateRewardedVideo4Adiscope, setStateRewardedVideo4Adiscope] = useReducer(
+    (prevState: RewardedVideoState, newState: Partial<RewardedVideoState>) => ({
+      ...prevState,
+      ...newState,
+    }),
+    initialState
+  );
 
   const showWithLoadRewardedVideo4Adiscope = useCallback(async (unitIdOverride?: string) => {
     const effectiveUnitId = unitIdOverride || unitId;
